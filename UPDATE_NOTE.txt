@@ -1,0 +1,4 @@
+二学期期末 英語の応援キャラを6人のぬいぐるみ写真に統一。英語ページの重複音ONボタンを削除。既存の問題や進捗は維持。
+注：この英語コースの正解表示は「次へ」で進む形式のため、0.2秒短縮するタイマーが存在しません。自動遷移は新設していません。
+
+Top page sound ON/OFF button added; synchronized with English quiz sound setting.

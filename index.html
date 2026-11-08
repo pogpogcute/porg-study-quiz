@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#eef5fa">
+<title>ぼくのテスト勉強基地｜習熟度・二学期期末</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:#172842;background:#eef5fa}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 95% 3%,#ffe8ba 0,transparent 28%),radial-gradient(circle at 0% 20%,#d9f7ee 0,transparent 37%),#f1f6ff}
+.shell{width:min(1030px,100%);margin:auto;padding:20px clamp(14px,4vw,40px) 60px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px}.brand{font-weight:950;font-size:clamp(20px,4vw,27px)}.subtitle{font-size:clamp(15px,2.3vw,18px);color:#43556c;margin:6px 0 0}
+button,a{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:4px solid #2687fe;outline-offset:3px}
+.pill{border:2px solid #c9d6e4;color:#243b54;background:#fff;border-radius:999px;padding:9px 15px;font-size:15px;font-weight:800}
+h1{font-size:clamp(32px,6vw,52px);margin:10px 0 6px;letter-spacing:-.04em;line-height:1.28}h2{font-size:clamp(26px,4vw,35px);letter-spacing:-.025em;line-height:1.35;margin:0 0 14px}h3{font-size:clamp(20px,3vw,25px);margin:0 0 12px}p{line-height:1.7}
+.lead{font-weight:800;color:#556a81;font-size:clamp(17px,2.8vw,21px);margin:0 0 27px}
+.subjects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.subject{border:3px solid var(--line);background:var(--bg);box-shadow:0 8px 0 var(--shadow);border-radius:24px;min-height:178px;padding:24px 15px;text-align:left;display:flex;align-items:center;gap:17px;transition:transform .1s;cursor:pointer}.subject:active{transform:translateY(4px);box-shadow:0 4px 0 var(--shadow)}.subject .emoji{font-size:clamp(46px,7vw,72px);line-height:1}.subject .subject-title{display:block;font-size:clamp(29px,4.8vw,42px);font-weight:950;letter-spacing:.02em}.subject .subject-sub{display:block;font-size:clamp(14px,2vw,18px);font-weight:750;line-height:1.45;margin-top:6px;color:#526579}
+.subject[data-s="science"]{--bg:#e3f7ed;--line:#9ddbc0;--shadow:#bddfcc}.subject[data-s="social"]{--bg:#fff1dd;--line:#ecc993;--shadow:#f0dcba}.subject[data-s="english"]{--bg:#e8eaff;--line:#c4c8ee;--shadow:#d5daf0}.subject[data-s="home"]{--bg:#ffe8f0;--line:#eab4cc;--shadow:#efd1dd}
+.panel{border:2px solid #dbe5f0;background:#fff;border-radius:24px;padding:clamp(16px,4vw,30px);box-shadow:0 8px 30px #49617b0d}.hidden{display:none!important}.back{background:#fff;border:2px solid #cbd9e8;border-radius:14px;padding:10px 16px;font-size:18px;font-weight:800;margin-bottom:20px}.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.mode{padding:19px 16px;text-align:left;border:2px solid #b9d1e6;border-radius:18px;background:#f6faff;min-height:135px;font-weight:900;color:#17324d;font-size:clamp(22px,3.5vw,28px)}.mode small{display:block;font-size:clamp(14px,2vw,17px);line-height:1.5;color:#587085;margin-top:10px;font-weight:600}.mode[disabled]{opacity:.48;cursor:not-allowed}.status{background:#f3f7fc;border:1px solid #dbe7f2;border-radius:15px;padding:13px 16px;margin-top:18px;font-size:17px;line-height:1.6}
+.tag{display:inline-block;background:#e2f7ee;border-radius:99px;padding:5px 12px;font-size:14px;font-weight:900;color:#176a51;margin-bottom:12px}.question{font-size:clamp(25px,4.4vw,36px);font-weight:950;line-height:1.55;margin:0 0 24px}.answers{display:grid;gap:14px}.answer{font-size:clamp(21px,3.5vw,28px);font-weight:750;border-radius:17px;background:#fff;border:3px solid #cbd7eb;padding:18px 17px;text-align:left;min-height:75px;color:#1c2e4d}.answer:hover:not(:disabled){background:#f2f8ff}.answer.good{background:#def9e8;border-color:#35a86a}.answer.bad{background:#ffe5e5;border-color:#e56f6f}.answer:disabled{cursor:default}.feedback{font-size:clamp(20px,3vw,25px);line-height:1.6;font-weight:800;background:#fff6dd;border-radius:15px;padding:17px;margin-top:20px}.primary{background:#205fc6;color:#fff;border:0;border-radius:16px;font-size:clamp(20px,3vw,25px);font-weight:900;min-height:60px;padding:14px 28px}.secondary{background:#fff;border:2px solid #b5cadf;color:#17344d;border-radius:14px;font-size:17px;font-weight:850;padding:12px 16px}.actionline{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap;margin-top:22px}.progress{height:15px;border-radius:30px;background:#e5ecf5;overflow:hidden;margin:12px 0 24px}.progress>div{background:#4da782;height:100%;transition:width .2s}
+.celebrate{text-align:center}.bigemoji{font-size:clamp(70px,15vw,116px)}.celebrate h2{font-size:clamp(32px,6vw,52px)}.celebrate p{font-size:clamp(20px,3vw,26px);font-weight:800}
+.footer{text-align:center;margin-top:35px}.helper{font-size:15px;color:#587081}.btnlink{display:inline-block;text-decoration:none;background:#fff;border:2px solid #abc9da;border-radius:16px;padding:18px;font-size:clamp(20px,3vw,24px);font-weight:900}.gridlinks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.parent{background:#fff;border-radius:22px;border:2px solid #d7e1ed;padding:22px;margin-top:20px}.parent h2{font-size:29px}.parent h3{font-size:22px;margin-top:27px}.settingsrow{display:grid;grid-template-columns:1fr 1fr;gap:14px}.frow{margin:15px 0}label{display:block;font-size:16px;font-weight:800;margin-bottom:8px}input,textarea,select{width:100%;border:2px solid #bdcfe1;border-radius:12px;background:white;font:inherit;font-size:17px;padding:12px;color:#19344c}textarea{min-height:136px;line-height:1.5}input[type=file]{max-width:100%}.warning{background:#fff1df;border-left:5px solid #df9840;padding:14px;border-radius:9px;font-size:15px;line-height:1.7;margin:12px 0}.small{font-size:15px;line-height:1.6;color:#50667d}.parent-acts{display:flex;flex-wrap:wrap;gap:10px}.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:#182b45;color:white;font-size:16px;border-radius:13px;padding:12px 18px;z-index:20;max-width:90%;text-align:center}
+@media(max-width:650px){.subject{min-height:160px;padding:14px;flex-direction:column;align-items:flex-start;gap:8px}.subject .emoji{font-size:52px}.subjects{gap:13px}.mode-grid,.gridlinks,.settingsrow{grid-template-columns:1fr}.subject .subject-sub{font-size:14px}header{margin-bottom:10px}.shell{padding-top:13px}.brand{font-size:19px}}
+@media(min-width:651px){.subject .emoji{min-width:80px;text-align:center}}
+
+.exam-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:15px 0 24px}
+.exam-button{min-height:155px;border-radius:22px;background:#fff;border:3px solid #c5d7e6;padding:20px 18px;text-align:left;display:flex;gap:15px;align-items:center;box-shadow:0 6px 0 #dce7f1;color:#152f49}
+.exam-button strong{display:block;font-size:clamp(23px,3.2vw,33px);line-height:1.4}.exam-button small{display:block;font-size:clamp(14px,2vw,17px);margin-top:9px;color:#54657a;font-weight:700}.exam-icon{font-size:48px;flex-shrink:0}
+.exam-button.selected{border-color:#2b83d3;background:#e6f4ff;box-shadow:0 4px 0 #a5cdeb}
+.restored-games{display:grid;gap:13px}.restored-game{display:flex;gap:12px;align-items:flex-start;background:#f5faff;padding:17px;border:2px solid #b5d0e4;border-radius:18px;text-decoration:none;min-height:93px}
+.restored-game strong{display:block;font-size:clamp(21px,3.2vw,27px);line-height:1.35}.restored-game small{display:block;font-size:16px;margin-top:8px;color:#405872;font-weight:650;line-height:1.5}
+.restored-game .em{font-size:37px;line-height:1.1}.note-warning{border-color:#e7cb8e;background:#fff8e7}
+#examPicked{font-size:19px;font-weight:800;margin-bottom:18px}.hidden{display:none!important}
+@media(max-width:660px){.exam-grid{grid-template-columns:1fr}.exam-button{min-height:112px;padding:13px}.exam-icon{font-size:42px}.exam-button strong{font-size:26px}}
+
+.balloon-board{margin:18px 0 24px;padding:17px 13px;border:3px solid #e7bddc;border-radius:23px;background:linear-gradient(155deg,#fff6fd,#e9f5ff);text-align:center}
+.balloon-board h2{font-size:clamp(23px,4vw,32px);margin:0 0 6px}.balloon-board p{margin:5px 0 13px;font-weight:750;font-size:16px}.balloon-roster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end}.balloon-member{display:flex;align-items:center;flex-direction:column;justify-content:end;min-height:205px;padding:10px 3px;background:#ffffffa8;border-radius:18px}.balloon-shape{width:var(--balloon-size);height:calc(var(--balloon-size)*1.16);max-width:100%;border-radius:52% 52% 49% 49%;background:radial-gradient(circle at 30% 25%,#ffffffc9 0 8%,transparent 24%),var(--balloon-color);box-shadow:inset -8px -10px 12px #0000001c,0 5px 10px #00000013;display:flex;align-items:center;justify-content:center;color:#172842;font-size:clamp(15px,2.7vw,24px);font-weight:950;position:relative;transition:width .4s,height .4s}.balloon-shape:after{content:' ';position:absolute;bottom:-10px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:12px solid var(--balloon-color)}.balloon-string{height:20px;width:2px;background:#9c8b9b}.balloon-member img{width:60px;height:60px;object-fit:cover;border-radius:50%;border:3px solid white}.balloon-name{font-weight:900;font-size:clamp(13px,2.5vw,18px)}.balloon-points{font-size:14px;font-weight:800}.balloon-board .balloon-hint{font-size:13px;color:#526579;margin-top:14px}@media(min-width:700px){.balloon-roster{grid-template-columns:repeat(6,minmax(0,1fr))}}
+</style>
+<style id="compact-feedback-20261102">
+/* Correct / incorrect feedback: reduce panel vertical footprint, preserve legibility. */
+.resultbanner{padding-top:10px!important;padding-bottom:10px!important;margin-top:9px!important;line-height:1.3!important}
+.feedback{padding-top:9px!important;padding-bottom:9px!important;margin-top:8px!important;min-height:0!important;line-height:1.4!important}
+.feedback p{margin-top:4px!important;margin-bottom:4px!important;line-height:1.4!important}
+.feedback .next{margin-top:5px!important}
+.reactionWrap{padding-top:9px!important;padding-bottom:9px!important;margin-top:9px!important;gap:12px!important}
+.reactionWrap .reactPhoto{width:80px!important;height:83px!important}
+.reactionWrap .reactMessage{line-height:1.25!important}
+.reactionWrap .reactDetails{margin-top:4px!important}
+.overlay-inner{padding:16px 20px!important;max-height:85dvh!important}
+.overlay-inner h2{margin:3px 0 5px!important;line-height:1.25!important}
+.overlay-inner p{margin:5px 0!important;line-height:1.4!important}
+.overlay .big-mascot svg{width:135px!important;height:137px!important}
+.overlay .btn{margin-top:8px!important}
+#cheer > div{padding-top:12px!important;padding-bottom:12px!important;max-height:88dvh!important;overflow:auto!important}
+#cheer .mascotBig{width:min(130px,30vw)!important;height:min(130px,30vw)!important}
+#cheer h2{margin-top:6px!important;margin-bottom:5px!important}
+#cheer p{margin-top:4px!important;margin-bottom:5px!important}
+</style></head>
+<body><div class="shell">
+<header><div><div class="brand">🍎 ぼくのテスト勉強基地</div><p class="subtitle">今日もコツコツ、ポイントをためよう！</p></div><button class="pill" id="globalSoundToggle" type="button" aria-pressed="true">🔊 音 ON</button><button class="pill" id="goHome">🏠 トップへ</button></header>
+<main>
+<section id="viewHome"><h1>まずテストをえらぼう</h1><p class="lead">習熟度と二学期期末は、別々の問題です。</p><section class="balloon-board" aria-label="みんなのバルーンランキング"><h2>🎈 みんなのバルーン広場</h2><p>正解すると担当キャラのバルーンが育つよ！ 大きいほど高得点！</p><div id="balloonRoster" class="balloon-roster"></div><p class="balloon-hint">この端末でためたポイントを表示します。まずは英語の正解で育ちます。</p></section><div class="exam-grid" id="examGrid">
+<button class="exam-button" data-exam="proficiency"><span class="exam-icon">📗</span><span><strong>習熟度テスト対策</strong><small>前からの復習・習熟度の問題</small></span></button>
+<button class="exam-button" data-exam="term"><span class="exam-icon">📝</span><span><strong>二学期期末テスト対策</strong><small>いま習っている期末の範囲</small></span></button>
+</div><div class="status hidden" id="examPicked"></div><h2 class="hidden" id="subjectPickTitle">つぎは教科をえらぼう！</h2><div class="subjects hidden" id="subjectsGrid">
+<button class="subject" data-s="science"><span class="emoji">🧪</span><span><span class="subject-title">理科</span><span class="subject-sub">実験・植物・ものの変化</span></span></button>
+<button class="subject" data-s="social"><span class="emoji">🌏</span><span><span class="subject-title">社会</span><span class="subject-sub">地理・歴史</span></span></button>
+<button class="subject" data-s="english"><span class="emoji">🔤</span><span><span class="subject-title">英語</span><span class="subject-sub">文法・語順・時制</span></span></button>
+<button class="subject" data-s="home"><span class="emoji">🍳</span><span><span class="subject-title">家庭科</span><span class="subject-sub">食生活・調理・生活</span></span></button>
+<a class="subject subject-term-extra" id="technologySubjectButton" href="technology_term.html" aria-label="技術の期末クイズ83問を開く" style="--bg:#fff3db;--line:#dfb879;--shadow:#ebd5a8;display:none;text-decoration:none;color:#172842"><span class="emoji">🔧</span><span><span class="subject-title">技術</span><span class="subject-sub">発電・回路・安全（83問）</span></span></a></div><div id="ohmTermShortcut" style="display:none;margin:16px auto;padding:18px;border:3px solid #93c5fd;border-radius:22px;background:#eff6ff;max-width:720px"><div style="font-size:25px;font-weight:900">⚡ 二学期期末・理科 オームの法則</div><p style="font-size:18px">「何を求める？」「どの数字？」から始める57問。直列・並列・図1〜3まで！</p><a href="science_ohm_term.html" style="display:block;background:#1764ac;color:white;text-align:center;padding:16px;border-radius:15px;font-weight:900;font-size:22px;text-decoration:none">オームの法則を単元別に練習する</a></div><div id="junior1Review" style="margin:16px auto;padding:18px;border-radius:20px;background:#fff4d8;border:2px solid #e3bd64;max-width:700px;font-family:system-ui,sans-serif"><div style="font-size:22px;font-weight:900;color:#20304b">📘 中1英語のきほん総復習</div><p style="font-size:17px;color:#20304b">習熟度・期末とは別の練習です。基礎72問＋総合20問＋重要単語20問＋短い対話文25問。中2への橋渡しも少し含みます。</p><a href="english_junior1_review.html" style="display:block;background:#006e67;color:white;text-align:center;border-radius:15px;padding:13px;font-size:19px;font-weight:800;text-decoration:none">復習ゲームを開く</a></div>
+<div style="margin:14px auto;padding:17px;border-radius:20px;background:#e8f5ff;border:2px solid #91bde9;max-width:700px;font-family:system-ui,sans-serif"><div style="font-size:23px;font-weight:900;color:#213454">🧩 英語・日本語 ブロック並べ替え</div><p style="font-size:17px;color:#213454">意味のまとまりから始めて、最後は単語単位に挑戦。タップだけで練習できます。途中再開・間違い直し対応。</p><a href="english_block_order.html" style="display:block;background:#225bb9;color:white;text-align:center;border-radius:15px;padding:15px;font-size:20px;font-weight:900;text-decoration:none">ブロック並べ替えを始める</a></div>
+<div style="margin:14px auto;padding:17px;border-radius:20px;background:#e8f5ff;border:2px solid #91bde9;max-width:700px;font-family:system-ui,sans-serif"><div style="font-size:23px;font-weight:900;color:#213454">🧩 英語・日本語 ブロック並べ替え</div><p style="font-size:17px;color:#213454">意味のまとまりから始めて、最後は単語単位に挑戦。タップだけで練習できます。途中再開・間違い直し対応。</p><a href="english_block_order.html" style="display:block;background:#225bb9;color:white;text-align:center;border-radius:15px;padding:15px;font-size:20px;font-weight:900;text-decoration:none">ブロック並べ替えを始める</a></div>
+<div class="status" id="homeReportStatus" role="status">📨 学習記録：設定を確認中</div><div class="status" id="homeStatus">🦊 さくちゃん「りんごをゲットするぞ！ やんのかこら！」</div></section>
+<section id="viewSubject" class="hidden"><button class="back" data-back="home">← 4教科にもどる</button><div class="panel"><h2 id="subjectHeading"></h2><p class="lead">やりたい勉強をえらぼう！</p><div class="mode-grid hidden" id="oldModeGrid"><button class="mode" data-mode="demo">🎲 おまかせ練習 <small>前の基礎10問</small></button><button class="mode" data-mode="work">📖 ワークにそった問題 <small id="workDescription">学校のワークから追加した問題</small></button></div><div id="restoredGames" class="restored-games" style="margin-top:10px"></div><div id="subjectExtra" class="hidden" style="margin-top:24px"></div><div class="status" id="subjectNote"></div></div></section>
+<section id="viewQuiz" class="hidden"><button class="back" data-back="subject">← 教科のメニューへ</button><div class="panel"><span class="tag" id="quizTag"></span><div id="quizQuestionArea"><div id="progressLabel" class="small"></div><div class="progress"><div id="progressBar"></div></div><p class="question" id="quizQuestion"></p><div class="answers" id="answerArea"></div><div class="feedback hidden" id="feedback"></div><div class="actionline"><button class="primary hidden" id="nextQ">つぎへ ➜</button></div></div><div class="celebrate hidden" id="celebrate"><div class="bigemoji" id="celebrateEmoji">🦊</div><h2 id="celebrateTitle"></h2><p id="celebrateText"></p><button class="primary" id="continueAfterFive">つづきをやる ➜</button></div><div class="celebrate hidden" id="quizResult"><div class="bigemoji">🏆</div><h2>10問クリア！</h2><p id="resultText"></p><div class="actionline"><button class="secondary" id="retryQuiz">もう一度チャレンジ</button><button class="primary" id="finishQuiz">4教科にもどる</button></div></div></div></section>
+<section id="viewParent" class="hidden"><button class="back" data-back="home">← トップへ</button><div class="parent"><h2>⚙️ 保護者用設定</h2><p class="warning"><strong>この設定は、この端末・このブラウザだけに保存されます。</strong> 今の段階では、お母さんのスマホでの変更は息子さんの端末には自動反映されません。また、これは簡易設定画面で、パスワード保護はありません。</p><div class="frow"><label for="editSubject">設定する教科</label><select id="editSubject"><option value="science">理科</option><option value="social">社会</option><option value="english">英語</option><option value="home">家庭科</option></select></div>
+<h3>📨 4教科の学習履歴・自動送信</h3>
+<p class="small">理科・社会・英語・家庭科の、このページ内の問題と、同梱した各ゲームで問題を解くと、学習履歴をGoogleへ送信します。ゲームの記録は最初の回答・5問・10問などの区切りで送信を試みます。設定は<strong>実際に勉強する端末</strong>で最初に1回だけ。公開ページに秘密キーは埋め込みません。</p>
+<div class="frow"><label for="reportEndpoint">Google Apps Script のウェブアプリURL</label><input id="reportEndpoint" type="url" inputmode="url" autocomplete="off" placeholder="https://script.google.com/macros/s/.../exec"></div>
+<div class="frow"><label for="reportToken">秘密キー（公開せず、端末内だけに保存）</label><input id="reportToken" type="password" autocomplete="off" spellcheck="false" placeholder="Apps Script と同じ秘密キー"></div>
+<div class="frow"><label style="display:flex;align-items:center;gap:10px"><input id="reportEnable" type="checkbox" style="width:23px;height:23px;flex:none" checked>4教科の学習履歴を自動送信する</label></div>
+<div class="parent-acts"><button class="secondary" id="saveReport">📨 送信設定を保存</button><button class="secondary" id="testReport">📤 試しに送信</button></div>
+<p class="small" id="reportNotice" aria-live="polite">まだ設定していません。</p>
+<p class="warning">Googleに届いたかは、メールか「学習記録」シートで確認してください。送信中の通信エラーは表示できますが、通信成功だけでは記録完了の証明にはなりません。なお、Google側のメール件名は現在「理科の学習報告」のままでも、表の「ゲーム」欄には各教科名が入ります。</p>
+<h3>① いま勉強する範囲</h3><div class="frow"><label for="editTopic">単元・ワークの範囲（子ども用画面に表示）</label><input id="editTopic" placeholder="例：ワーク p.78～81／比較級・最上級"></div>
+<h3>② ワークにそった問題を追加</h3><p class="small">この欄に問題を入れると、子ども用の「ワークにそった問題」が使えるようになります。問題は1行につき1問、区切りは半角の | です。</p><div class="warning">書き方：<br>問題文 | 選択肢1 | 選択肢2 | 選択肢3 | 正解番号(1～3) | 解説<br><br>例：<br>日本で一番面積が広い都道府県は？ | 北海道 | 東京都 | 山口県 | 1 | 北海道が一番広いよ。</div><div class="frow"><label for="editQuestions">ワーク問題（まとめて貼り付けOK）</label><textarea id="editQuestions" rows="8" placeholder="ここにワークに沿った問題を貼り付け"></textarea></div><p id="importCount" class="small">現在：0問</p><div class="parent-acts"><button class="secondary" id="saveParent">この教科の設定を保存</button><button class="secondary" id="copyPrompt">ChatGPTへの依頼文をコピー</button></div><p id="saveNotice" class="small" aria-live="polite"></p>
+<h3>③ 別の学習ゲームへのリンク</h3><p class="small">社会・英語・家庭科などの完成済みゲームがウェブ上にある場合に設定できます。パソコン内のファイル名だけを入力しても、別の端末にはつながりません。</p><div class="settingsrow"><div class="frow"><label for="extraName">ゲーム名</label><input id="extraName" placeholder="例：英語マスター"></div><div class="frow"><label for="extraUrl">ゲームのURL（https://〜）</label><input id="extraUrl" type="url" placeholder="https://..."></div></div>
+<h3>④ 設定の持ち運び（手動）</h3><p class="small">別の端末に設定を移したい場合は、設定ファイルを書き出して、別の端末で読み込めます。自動同期ではありません。</p><div class="parent-acts"><button class="secondary" id="downloadConfig">設定ファイルを書き出す</button><label style="display:inline-block;margin:0"><span class="secondary" style="display:inline-block;cursor:pointer">設定ファイルを読み込む</span><input type="file" id="importConfig" accept=".json,application/json" style="position:absolute;width:1px;height:1px;opacity:0" aria-label="設定ファイルを読み込む"></label></div><p id="configNotice" class="small" aria-live="polite"></p></div></section>
+</main><footer class="footer"><button class="pill" id="openParent">⚙️ おうちの人の設定</button><p class="helper">このページの4教科は保護者設定から自動通知を設定できます。理科の別ゲームはそれぞれの「保護者レポート」で設定してください。</p></footer>
+</div><div id="toast" class="toast hidden" role="status"></div>
+<script>
+'use strict';
+const DEFAULT_QUESTIONS = {"science":[["酸化銀を加熱すると、発生する気体はどれ？",["酸素","水素","二酸化炭素"],0,"酸化銀は加熱すると銀と酸素に分かれるよ。"],["炭酸水素ナトリウムを加熱したとき、石灰水を白くにごらせる気体は？",["酸素","二酸化炭素","窒素"],1,"二酸化炭素が出るので、石灰水が白くにごるよ。"],["光合成で植物が取り入れる気体は？",["酸素","窒素","二酸化炭素"],2,"光合成では二酸化炭素と水を使い、光のエネルギーを利用するよ。"],["デンプンがあるか調べる薬品は？",["ヨウ素液","石灰水","ベネジクト液"],0,"ヨウ素液はデンプンがあると青紫色に変わるよ。"],["水に溶けた糖を加熱して調べるときに使う薬品は？",["ヨウ素液","ベネジクト液","塩酸"],1,"ベネジクト液は還元糖を調べるのに使うよ。"],["鉄と硫黄を加熱してできる物質は？",["酸化鉄","硫化鉄","塩化鉄"],1,"鉄と硫黄が化合して硫化鉄になるよ。"],["葉の表皮にある、気体の出入り口は？",["葉脈","気孔","根毛"],1,"気孔は気体の出入りや蒸散に関係するよ。"],["植物が光合成をする条件として必要なのは？",["光","強い風","冷たい土"],0,"光が必要。比較実験では光以外の条件をそろえよう。"],["加熱中の試験管の口を、人に向けてもよい？",["よい","よくない","どちらでも同じ"],1,"中身が飛び出す可能性があるので、人に向けないよ。"],["水の中に二酸化炭素が溶けると、主に何性に近づく？",["酸性","アルカリ性","必ず中性"],0,"溶けた二酸化炭素の一部は炭酸になり、酸性に近づくよ。"]],"social":[["日本列島の中央付近にある大きな地質構造の境目として知られるのは？",["フォッサマグナ","リアス海岸","扇状地"],0,"フォッサマグナは日本列島の地質を考えるうえで重要な地域だよ。"],["川が山地から平野に出るところにできやすい地形は？",["扇状地","三角州","砂州"],0,"扇状地は川が運んだ土砂が扇形にたまってできるよ。"],["河口付近に土砂がたまってできる地形は？",["盆地","三角州","カルデラ"],1,"河口近くに細かい土砂が積もって三角州ができるよ。"],["江戸幕府を開いた人物は？",["徳川家康","徳川吉宗","織田信長"],0,"徳川家康は1603年に征夷大将軍になったよ。"],["江戸時代、大名が江戸と領地を行き来する制度は？",["参勤交代","地租改正","廃藩置県"],0,"参勤交代は大名統制に利用された制度だよ。"],["江戸時代、町人の子どもなどが読み書きを学んだ場所は？",["寺子屋","藩庁","関所"],0,"寺子屋では読み書きやそろばんなどを学んだよ。"],["冬の日本海側に雪が多い主な理由は？",["季節風が日本海で水蒸気を含むから","太平洋が凍るから","赤道に近いから"],0,"北西の季節風が日本海で水蒸気を含み、山地にぶつかって雪を降らせるよ。"],["山に囲まれた平らな土地を何という？",["盆地","三角州","海溝"],0,"盆地は周りを山地などに囲まれた低地だよ。"],["江戸時代に広まった、歌舞伎や浮世絵などの文化は？",["町人文化","縄文文化","飛鳥文化"],0,"江戸では町人が文化の担い手として活躍したよ。"],["米づくりに適した平野が広がる地域では、主に何が発達する？",["稲作","遠洋漁業","牧畜だけ"],0,"平野と水を生かした稲作が行われてきたよ。"]],"english":[["「私は昨日りんごを食べました。」に合う文は？",["I eat an apple yesterday.","I ate an apple yesterday.","I am eat an apple yesterday."],1,"yesterday があるので過去形 ate を使うよ。"],["「彼は今、走っています。」に合う文は？",["He is running now.","He runs yesterday.","He running now."],0,"今していることは be動詞 + 動詞のing形だよ。"],["「私は明日勉強するつもりです。」に合う文は？",["I am going to study tomorrow.","I studied tomorrow.","I studying tomorrow."],0,"be going to + 動詞の原形で予定を表せるよ。"],["「この猫はあの猫より大きい。」に合う文は？",["This cat is biggest than that cat.","This cat is bigger than that cat.","This cat bigger that cat."],1,"比較級 bigger と than を組み合わせよう。"],["「彼はクラスで一番背が高い。」に合う文は？",["He is taller in his class.","He is the tallest in his class.","He is tall than his class."],1,"最上級は the tallest の形だよ。"],["「私はそのとき本を読んでいました。」に合う文は？",["I was reading a book then.","I read a book tomorrow.","I am read a book then."],0,"過去進行形は was/were + ing だよ。"],["「あなたは昨日忙しかったですか。」に合う文は？",["Are you busy yesterday?","Were you busy yesterday?","Did you were busy yesterday?"],1,"be動詞の過去形を使う疑問文だよ。"],["「彼女は毎日英語を勉強します。」に合う文は？",["She study English every day.","She studies English every day.","She studying English every day."],1,"三人称単数の現在形では studies を使うよ。"],["「私には兄が2人います。」に合う文は？",["I have two brothers.","I has two brothers.","I am two brothers."],0,"I のときは have を使うよ。"],["「その本はこれよりおもしろい。」に合う文は？",["That book is more interesting than this one.","That book is most interesting than this one.","That book more interesting this one."],0,"長めの形容詞では more + 形容詞 + than を使うよ。"]],"home":[["食品を冷蔵庫に入れる主な目的は？",["細菌の増殖をおさえる","必ず無菌にする","栄養を増やす"],0,"冷蔵は細菌の増殖を遅らせるが、無菌になるわけではないよ。"],["包丁を持って移動するときに安全なのは？",["刃先を下に向けて周囲に注意する","刃先を前に向けて走る","友達に投げて渡す"],0,"刃の向きと周囲に注意してゆっくり移動するよ。"],["主に体をつくる材料になる栄養素は？",["たんぱく質","水だけ","食塩だけ"],0,"たんぱく質は筋肉などの材料になるよ。"],["でんぷんを多く含む食品は？",["ごはん","食塩","水"],0,"ごはんには炭水化物のでんぷんが多いよ。"],["生肉を切ったまな板をそのままサラダに使うのは？",["安全","食中毒の危険がある","味がよくなる"],1,"生肉から別の食品へ細菌が移ることがあるよ。"],["賞味期限が表すのは？",["おいしく食べられる目安","その時刻を過ぎると必ず危険","製造した日"],0,"賞味期限は未開封で適切に保存したときのおいしさの目安だよ。"],["調理前の手洗いはなぜ必要？",["食品への汚染を減らすため","味を濃くするため","食材の色を変えるため"],0,"手を洗って細菌や汚れを減らそう。"],["加熱が必要な肉を調理するとき大切なのは？",["中心まで十分に加熱する","表面だけ温める","常温で何日も置く"],0,"中心まで十分に加熱することで食中毒のリスクを減らすよ。"],["食事の栄養バランスを考えるときの工夫は？",["いろいろな食品を組み合わせる","好きな一品だけ食べる","水分を一切取らない"],0,"主食・主菜・副菜などを組み合わせよう。"],["消費期限がよく表示されるのは？",["傷みやすい食品","常温で長期保存できる乾物だけ","食器"],0,"消費期限は傷みやすい食品に表示されることが多いよ。"]]};
+const subjects = {science:{name:'理科',icon:'🧪'},social:{name:'社会',icon:'🌏'},english:{name:'英語',icon:'🔤'},home:{name:'家庭科',icon:'🍳'}};
+const STORAGE='boku-test-portal-v1';
+const SESSION='boku-test-quiz-v1';
+let settings={};let currentSubject='science', currentMode='demo', quiz=null, showFive=false;
+const $=id=>document.getElementById(id);
+function safeJson(s,def){try{return JSON.parse(s)}catch(e){return def}}
+function defaults(){return Object.fromEntries(Object.keys(subjects).map(k=>[k,{topic:'',questions:'',extraName:'',extraUrl:''}]))}
+settings={...defaults(),...safeJson(localStorage.getItem(STORAGE),{})};
+function persistSettings(){try{localStorage.setItem(STORAGE,JSON.stringify(settings));return true}catch(e){return false}}
+function showView(name){['Home','Subject','Quiz','Parent'].forEach(v=>$('view'+v).classList.toggle('hidden',v!==name));window.scrollTo(0,0)}
+function toast(msg){const x=$('toast');x.textContent=msg;x.classList.remove('hidden');setTimeout(()=>x.classList.add('hidden'),2800)}
+function renderBalloons(){
+ const el=document.getElementById('balloonRoster');if(!el)return;
+ let points={};try{points=JSON.parse(localStorage.getItem('study_mascot_balloon_v1')||'{}')||{}}catch(e){}
+ const chars=[['saku','さくちゃん','#ffadbd'],['hollow','プンプン','#c8b1ff'],['huggy','ハギー','#92d8ff'],['porg','ポーグ','#f6ce80'],['steve','スティーブ師匠','#b3edaa'],['gary','ゲイリー','#f4a9e0']];
+ chars.sort((a,b)=>(Number(points[b[0]])||0)-(Number(points[a[0]])||0));
+ const max=Math.max(100,...chars.map(c=>Number(points[c[0]])||0));
+ el.innerHTML=chars.map(([id,name,color])=>{const n=Math.max(0,Number(points[id])||0),size=Math.round(55+85*Math.sqrt(n/max));return `<div class="balloon-member"><div class="balloon-shape" style="--balloon-size:${size}px;--balloon-color:${color}">${n}点</div><div class="balloon-string"></div><img src="mascot-${id}.jpg" alt="${name}"><span class="balloon-name">${name}</span><span class="balloon-points">${n}ポイント</span></div>`}).join('');
+}
+function goHome(){renderBalloons();showView('Home')}
+function parseQuestions(raw){const rows=[];const bad=[];String(raw||'').split(/\r?\n/).forEach((line,n)=>{if(!line.trim()||line.trim().startsWith('#'))return;const p=line.split(/[|｜]/).map(x=>x.trim());if(p.length<5||p.length>6||!['1','2','3'].includes(p[4])||p.slice(0,4).some(v=>!v)){bad.push(n+1);return}rows.push({q:p[0],choices:p.slice(1,4),correct:Number(p[4])-1,explanation:p[5]||'もう一度覚えよう！'})});return {rows,bad}}
+function viewSubject(id){currentSubject=id;const s=subjects[id],c=settings[id];$('subjectHeading').textContent=s.icon+' '+s.name;$('subjectNote').textContent=c.topic?('📚 今の範囲：'+c.topic):'📚 ワークの問題は、おうちの人が後から追加できます。';const nq=parseQuestions(c.questions).rows.length;$('workDescription').textContent=nq?`${nq}問のワーク問題が入っています`:'まだ問題が入っていません';const extra=$('subjectExtra');extra.replaceChildren();if(id==='science'){
+ const h=document.createElement('h3');h.textContent='🧪 これまでの理科ゲーム';extra.append(h);
+ const info=document.createElement('p');info.className='small';info.textContent='下のゲームは、ファイル一式を同じフォルダに置いた場合に開けます。学習記録は各ゲームの設定を使います。';extra.append(info);
+ const wrap=document.createElement('div');wrap.className='gridlinks';
+ [['📗 理科マスター','rika_master_parent_report.html'],['🔎 読み取りラボ','rika_reading_parent_report.html'],['📝 理科の実戦テスト','rika_practical_exam.html']].forEach(([name,href])=>{const a=document.createElement('a');a.className='btnlink';a.href=href;a.textContent=name;wrap.append(a)});extra.append(wrap);
+ }
+ if(c.extraUrl){try{const u=new URL(c.extraUrl);if(['https:','http:'].includes(u.protocol)){const a=document.createElement('a');a.className='btnlink';a.style.display='block';a.style.marginTop='18px';a.href=u.href;a.rel='noopener noreferrer';a.textContent='🎮 '+(c.extraName||'追加の学習ゲーム')+' を開く';extra.append(a)}}catch(e){}}
+ showView('Subject')}
+function getQuestions(s,mode){if(mode==='demo'){return DEFAULT_QUESTIONS[s].map(([q,choices,correct,explanation])=>({q,choices,correct,explanation}))}return parseQuestions(settings[s].questions).rows}
+function savedQuiz(){return safeJson(localStorage.getItem(SESSION),null)}
+function persistQuiz(){try{localStorage.setItem(SESSION,JSON.stringify(quiz))}catch(e){}}
+function clearQuiz(){try{localStorage.removeItem(SESSION)}catch(e){}}
+function enterQuiz(mode,restart=false){currentMode=mode;const arr=getQuestions(currentSubject,mode);if(!arr.length){toast('ワーク問題はまだありません。おうちの人に追加してもらってね。');return}const key=currentSubject+'|'+mode;const old=savedQuiz();if(!restart&&old&&old.key===key&&old.index<arr.length&&old.index>=0){quiz={...old,items:arr}}else{quiz={key,index:0,correct:0,answered:false,selected:null,items:arr,celebrated:false,sessionId:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2),activeSeconds:0,lastActiveAt:Date.now(),sentReportMilestones:[]};persistQuiz()}if(!quiz.sessionId)quiz.sessionId=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);if(!Array.isArray(quiz.sentReportMilestones))quiz.sentReportMilestones=[];quiz.lastActiveAt=Date.now();persistQuiz();showView('Quiz');drawQuiz()}
+function drawQuiz(){if(!quiz)return;const len=quiz.items.length;$('quizTag').textContent=subjects[currentSubject].name+' ／ '+(currentMode==='demo'?'おまかせ練習（過去の基礎）':'ワークにそった問題');$('quizQuestionArea').classList.remove('hidden');$('celebrate').classList.add('hidden');$('quizResult').classList.add('hidden');if(quiz.index>=len){drawResults();return}const item=quiz.items[quiz.index];$('progressLabel').textContent=`${quiz.index+1} / ${len} 問目　　正解 ${quiz.correct} 問`;$('progressBar').style.width=((quiz.index)/len*100)+'%';$('quizQuestion').textContent=item.q;const area=$('answerArea');area.replaceChildren();item.choices.forEach((choice,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=(i+1)+'．'+choice;if(quiz.answered){b.disabled=true;if(i===item.correct)b.classList.add('good');else if(i===quiz.selected)b.classList.add('bad')}b.addEventListener('click',()=>answer(i));area.append(b)});$('feedback').classList.toggle('hidden',!quiz.answered);$('nextQ').classList.toggle('hidden',!quiz.answered);if(quiz.answered){const good=quiz.selected===item.correct;$('feedback').textContent=(good?['🦊 さくちゃん「やった！ りんご100個ぶん！」','🍪 ハギー「正解！ クッキーの山だ！」','😤 プンプン「正解だ！ ふんっ！」'][quiz.index%3]:'😤 プンプン「むむっ！ 次はぜったい当てるぞ！」')+'\n'+item.explanation;$('feedback').style.whiteSpace='pre-line'}$('nextQ').textContent=quiz.index===len-1?'結果を見る ➜':'つぎへ ➜'}
+function answer(i){if(!quiz||quiz.answered)return;addStudyTime();quiz.selected=i;quiz.answered=true;if(i===quiz.items[quiz.index].correct)quiz.correct++;persistQuiz();const answered=quiz.index+1;if(answered===1)sendQuizMilestone('first');if(answered===5)sendQuizMilestone('half');if(answered===quiz.items.length)sendQuizMilestone('done');drawQuiz()}
+function goNext(){if(!quiz||!quiz.answered)return;addStudyTime();quiz.index++;quiz.answered=false;quiz.selected=null;quiz.celebrated=false;persistQuiz();if(quiz.index>0&&quiz.index%5===0&&quiz.index<quiz.items.length){showMilestone();return}drawQuiz()}
+function showMilestone(){showFive=true;$('quizQuestionArea').classList.add('hidden');$('quizResult').classList.add('hidden');$('celebrate').classList.remove('hidden');$('celebrateEmoji').textContent='🦊🍎🏆';$('celebrateTitle').textContent='5問すすめた！！';$('celebrateText').textContent='さくちゃん「うおおお！ りんご祭りだ！ やんのかこら！！」';$('continueAfterFive').textContent='後半戦へ ➜'}
+function drawResults(){clearQuiz();$('quizQuestionArea').classList.add('hidden');$('celebrate').classList.add('hidden');$('quizResult').classList.remove('hidden');$('resultText').textContent=`${quiz.items.length}問中 ${quiz.correct}問正解！ 🦊 さくちゃん「今日も宿題を食べつくしたぞ！」`;}
+function openParent(){loadEdit();readReportSettings();showView('Parent')}
+function loadEdit(){const c=settings[$('editSubject').value];$('editTopic').value=c.topic||'';$('editQuestions').value=c.questions||'';$('extraName').value=c.extraName||'';$('extraUrl').value=c.extraUrl||'';updateImportCount();$('saveNotice').textContent=''}
+function updateImportCount(){const p=parseQuestions($('editQuestions').value);$('importCount').textContent=`有効な問題：${p.rows.length}問`+(p.bad.length?` ／ 書き方を確認：${p.bad.join('、')}行目`:'')}
+function collectEdit(){return{topic:$('editTopic').value.trim(),questions:$('editQuestions').value.trim(),extraName:$('extraName').value.trim(),extraUrl:$('extraUrl').value.trim()}}
+function saveEdit(){const c=collectEdit(),parse=parseQuestions(c.questions);if(parse.bad.length){$('saveNotice').textContent='保存できません：問題の'+parse.bad.join('、')+'行目の区切り・正解番号を確認してください。';return false}if(c.extraUrl){try{const url=new URL(c.extraUrl);if(!['https:','http:'].includes(url.protocol))throw Error('protocol')}catch(e){$('saveNotice').textContent='ゲームURLは https:// または http:// ではじまるアドレスにしてください。';return false}}settings[$('editSubject').value]=c;if(!persistSettings()){$('saveNotice').textContent='この端末に保存できませんでした。ブラウザの保存設定を確認してください。';return false}$('saveNotice').textContent='✅ この端末に保存しました（他の端末へは自動で反映されません）。';return true}
+async function copyPrompt(){const k=$('editSubject').value,c=collectEdit();const txt=`中学2年の学習ゲーム用に問題を作ってください。\n教科：${subjects[k].name}\n作り方：学校のワークに沿った問題\nワークの範囲：${c.topic||'（ここにページ・単元を入れる）'}\n必要ならワークの写真を続けて添付します。\n各行は『問題文 | 選択肢1 | 選択肢2 | 選択肢3 | 正解番号(1～3) | 短い解説』にしてください。\n子どもが読みやすい短い文で、元の設問を丸写しにせず言い方を変えた練習問題にしてください。\nまずは10問。`;try{await navigator.clipboard.writeText(txt);toast('ChatGPTへの依頼文をコピーしました')}catch(e){window.prompt('この文章をコピーしてください',txt)}}
+function exportConfig(){const b=new Blob([JSON.stringify({format:'boku-test-portal-v1',settings},null,2)],{type:'application/json;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='テスト勉強基地_設定.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+async function importConfig(file){if(!file)return;try{const v=JSON.parse(await file.text());if(v.format!=='boku-test-portal-v1'||!v.settings||typeof v.settings!=='object')throw Error('format');const next=defaults();for(const k of Object.keys(next)){const c=v.settings[k]||{};next[k]={topic:String(c.topic||''),questions:String(c.questions||''),extraName:String(c.extraName||''),extraUrl:String(c.extraUrl||'')};if(parseQuestions(next[k].questions).bad.length)throw Error('questions')}settings=next;if(!persistSettings())throw Error('storage');loadEdit();$('configNotice').textContent='✅ 設定を読み込みました。'}catch(e){$('configNotice').textContent='この設定ファイルを読み込めませんでした。'}}
+// ---- 四教科共通の学習記録（スプレッドシート連携） ----
+const REPORT_STORE='boku-study-report-settings-v1';
+let reportConfig=safeJson(localStorage.getItem(REPORT_STORE),null)||{endpoint:'',token:'',enabled:true};
+let reportInFlight=false;
+function localDay(d=new Date()){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function validEndpoint(v){try{const u=new URL(String(v||'').trim());return u.protocol==='https:'&&u.hostname==='script.google.com'&&u.pathname.startsWith('/macros/s/')&&u.pathname.endsWith('/exec')}catch(e){return false}}
+function readyToReport(){return reportConfig.enabled&&validEndpoint(reportConfig.endpoint)&&Boolean(reportConfig.token)}
+function reportInfo(){const v=$('homeReportStatus');if(!v)return;v.textContent=readyToReport()?'📨 4教科の学習記録：自動送信 ON':'⚠️ 学習記録：未設定（おうちの人が設定）'}
+function readReportSettings(){
+ $('reportEndpoint').value=reportConfig.endpoint||'';
+ $('reportToken').value=reportConfig.token||'';
+ $('reportEnable').checked=reportConfig.enabled!==false;
+ $('reportNotice').textContent=readyToReport()?'設定済み。テスト送信でメールと学習記録を確認してください。':'この端末ではまだ送信設定が完了していません。';
+}
+function saveReportSettings(){
+ const endpoint=$('reportEndpoint').value.trim(),token=$('reportToken').value.trim(),enabled=$('reportEnable').checked;
+ if(enabled&&(!validEndpoint(endpoint)||!token)){$('reportNotice').textContent='URL（.../exec）と秘密キーを確認してください。';return false}
+ reportConfig={endpoint,token,enabled};
+ try{localStorage.setItem(REPORT_STORE,JSON.stringify(reportConfig))}catch(e){$('reportNotice').textContent='端末に設定を保存できませんでした。';return false}
+ reportInfo();$('reportNotice').textContent=enabled?'✅ この端末に設定を保存しました。次に「試しに送信」を押してください。':'この端末の自動送信をOFFにしました。';return true;
+}
+function studySeconds(){return quiz?Math.max(0,Number(quiz.activeSeconds)||0):0}
+function addStudyTime(){
+ if(!quiz)return;const now=Date.now(),prev=Number(quiz.lastActiveAt)||now;
+ if(document.visibilityState==='visible')quiz.activeSeconds=Math.max(0,Number(quiz.activeSeconds)||0)+Math.min(90,Math.max(0,(now-prev)/1000));
+ quiz.lastActiveAt=now;
+}
+function reportPayload(milestone){
+ const now=new Date(),subj=subjects[currentSubject].name,n=quiz.index+(quiz.answered?1:0),correct=quiz.correct,seconds=Math.round(studySeconds());
+ const mode=currentMode==='demo'?'おまかせ練習':'ワーク問題';
+ const label=`${subj}／${mode}`;
+ const rate=n?Math.round(correct/n*100):0;
+ const report=`【4教科の学習報告】\n日付：${localDay(now)}\n教科：${subj}\n学習内容：${mode}\n学習状況：${n}問回答済み／${quiz.items.length}問\n正解：${correct}問（${rate}%）\n学習時間の目安：約${seconds}秒\n経過：${milestone==='done'?'終了':milestone==='half'?'5問到達':'学習開始（最初の1問）'}\n※学習時間は画面操作中の概算です。`; 
+ return {token:reportConfig.token,id:`boku4:${quiz.sessionId}:${milestone}`,game:label,day:localDay(now),minutes:Math.round(seconds/6)/10,kinds:[{kind:'知識',total:n,correct:correct},{kind:'読み取り',total:0,correct:0}],topics:[{topic:label,correct:correct,total:n}],wrong:[],report,test:false};
+}
+async function submitReport(payload){
+ if(!readyToReport())return false;
+ try{
+  await fetch(reportConfig.endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(payload),keepalive:true});
+  return true; // no-cors なのでサーバーでの保存完了は検証できない
+ }catch(e){return false}
+}
+async function sendQuizMilestone(milestone){
+ if(!quiz||!readyToReport())return;
+ if(!Array.isArray(quiz.sentReportMilestones))quiz.sentReportMilestones=[];
+ if(quiz.sentReportMilestones.includes(milestone))return;
+ const p=reportPayload(milestone);
+ const ok=await submitReport(p);
+ if(ok&&quiz&&quiz.sessionId&&p.id.includes(quiz.sessionId)){
+  quiz.sentReportMilestones.push(milestone);
+  if(quiz.index<quiz.items.length)persistQuiz();
+ }
+}
+async function testReport(){
+ if(!saveReportSettings())return;
+ if(!readyToReport()){$('reportNotice').textContent='自動送信がOFFです。';return}
+ if(reportInFlight)return;reportInFlight=true;$('testReport').disabled=true;
+ $('reportNotice').textContent='送信テスト中…';
+ const now=new Date(),day=localDay(now),label='4教科トップページ（接続テスト）';
+ const p={token:reportConfig.token,id:`boku4:test:${Date.now()}:${Math.random().toString(36).slice(2)}`,game:label,day,minutes:0,kinds:[{kind:'知識',total:0,correct:0}],topics:[],wrong:[],report:`【4教科の送信テスト】\n${day} 4教科学習ページからの接続テストです。\nこのメールとスプレッドシートの行があれば、連携できています。`,test:true};
+ const ok=await submitReport(p);
+ $('reportNotice').textContent=ok?'📤 送信を試みました。メールと「学習記録」シートに新しい行があるか確認してください。':'❌ 通信できませんでした。URL・通信環境・設定を確認してください。';
+ reportInFlight=false;$('testReport').disabled=false;
+}
+$('saveReport').addEventListener('click',saveReportSettings);
+$('testReport').addEventListener('click',testReport);
+reportInfo();
+// --------------------------------------------------------
+
+document.addEventListener('visibilitychange',()=>{if(quiz&&document.visibilityState==='hidden'){addStudyTime();persistQuiz()}else if(quiz){quiz.lastActiveAt=Date.now()}});
+$('goHome').addEventListener('click',goHome);document.querySelectorAll('.subject[data-s]').forEach(b=>b.addEventListener('click',()=>viewSubject(b.dataset.s)));document.querySelectorAll('[data-back]').forEach(b=>b.addEventListener('click',()=>b.dataset.back==='home'?goHome():viewSubject(currentSubject)));document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>enterQuiz(b.dataset.mode)));$('nextQ').addEventListener('click',goNext);$('continueAfterFive').addEventListener('click',()=>{showFive=false;drawQuiz()});$('retryQuiz').addEventListener('click',()=>enterQuiz(currentMode,true));$('finishQuiz').addEventListener('click',goHome);$('openParent').addEventListener('click',openParent);$('editSubject').addEventListener('change',loadEdit);$('editQuestions').addEventListener('input',updateImportCount);$('saveParent').addEventListener('click',saveEdit);$('copyPrompt').addEventListener('click',copyPrompt);$('downloadConfig').addEventListener('click',exportConfig);$('importConfig').addEventListener('change',e=>{importConfig(e.target.files[0]);e.target.value=''});
+</script>
+<script>
+// 習熟度と二学期期末を分けた、完成版ゲームの一覧。元の10問サンプルは表示しない。
+const RESTORED_GAMES={
+ proficiency:{
+  science:[['🔥','あしたの習熟度 理科8単元','指定の8単元114問＋補充41問。やさしい問題から始められます','science_plants.html'],['📗','理科マスター','大切な知識・言い換え・復習','science_master.html'],['🔎','理科・読み取りラボ','問題の読み方、手がかりをつかむ','science_reading.html'],['🧪','理科 実戦チャレンジ','以前の実戦問題を復活','science_practical.html']],
+  social:[['📊','地理の図解チャレンジ（新）','雨温図・扇状地・三角州・等高線・地図記号の図付き問題','geo_figures.html'],['🗾','地理の習熟度クエスト','地形・気候・雨温図・産業・資源など。大きな文字とストーリー','social_geography.html'],['🏯','江戸時代 歴史マスター','江戸幕府・改革・産業・文化。単元を選んで練習','social_edo.html']],
+  english:[['🎮','レナとピイの英語ミッション','過去・未来・過去進行形など、以前のミッション','english_full.html?test=proficiency']],
+  home:[['🧵','家庭科・衣服ミッション','これまでの衣服の問題。復習にも使えます','home_economics_full.html?test=proficiency']]
+ },
+ term:{
+  science:[['🧩','オームの法則・計算前の練習【新規57問】','何を求める？ 数字を選ぶ→式を選ぶ→計算。写真の直列・並列・図1〜3にも対応','science_ohm_term.html'],['⚡','電流・電圧・抵抗 ミッション','電流・電圧・オームの法則・回路の計算。期末用の新しい問題集','science_electricity.html']],
+  social:[['🌍','二学期期末 社会【今回の範囲】','欧米の革命・国民国家・南北戦争・産業革命。教科書146〜155ページと学校の確認テスト対応','history_term_europe.html'],['📜','旧・二学期期末 社会【三学期・復習用】','以前の近代化・開国・幕府の滅亡の問題。学習履歴を残して保存','history_term.html'],['🏯','江戸時代 歴史マスター','既存の歴史教材を復習する','social_edo.html?test=term'],['🗾','地理の習熟度クエスト','既存の地理教材を復習する','social_geography.html?test=term']],
+  english:[['📝','Unit 6 期末ワーク追加問題','ワーク84〜95ページ：better・best、as ... as、道案内、学校生活・発表','english_term.html'],['📘','Unit 6 比較級・最上級','ワーク78〜85ページ対応の完成版。おまけ問題・復習あり','english_full.html?test=term']],
+  home:[['🧺','家庭科・衣服ミッション','衣服表示・洗濯表示・繊維・衣服の手入れ。キャラ付き完成版','home_economics_full.html?test=term']]
+ }
+};
+let currentExam='';
+function pickExam(type){
+ currentExam=type;const techButton=document.getElementById('technologySubjectButton');if(techButton)techButton.style.display=type==='term'?'flex':'none';const ohmShortcut=document.getElementById('ohmTermShortcut');if(ohmShortcut)ohmShortcut.style.display=type==='term'?'block':'none';
+ document.querySelectorAll('[data-exam]').forEach(b=>b.classList.toggle('selected',b.dataset.exam===type));
+ $('subjectsGrid').classList.remove('hidden');$('subjectPickTitle').classList.remove('hidden');$('examPicked').classList.remove('hidden');
+ $('examPicked').textContent=type==='proficiency'?'📗 習熟度テスト対策を選択中':'📝 二学期期末テスト対策を選択中';
+ document.querySelectorAll('.subject[data-s] .subject-sub').forEach(x=>{if(type==='term')x.textContent='期末の問題を開く';else x.textContent='以前の単元を復習する';});
+ try{sessionStorage.setItem('boku-selected-exam-v1',type)}catch(e){}
+ $('subjectPickTitle').scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.querySelectorAll('[data-exam]').forEach(b=>b.addEventListener('click',()=>pickExam(b.dataset.exam)));
+// 昔の問題を消さず、全教科の完成版をここに接続。
+viewSubject=function(id){
+ if(!currentExam){showView('Home');toast('最初に「習熟度」か「二学期期末」をえらんでね');return;}
+ currentSubject=id;
+ const s=subjects[id],c=settings[id],label=currentExam==='term'?'二学期期末テスト':'習熟度テスト';
+ $('subjectHeading').textContent=s.icon+' '+s.name+' ／ '+label;
+ $('oldModeGrid').classList.add('hidden');$('subjectExtra').classList.add('hidden');
+ const links=RESTORED_GAMES[currentExam][id]||[];
+ const div=$('restoredGames');div.replaceChildren();
+ links.forEach(([icon,title,description,href])=>{
+  const a=document.createElement('a');a.className='restored-game';a.href=href;
+  const em=document.createElement('span');em.className='em';em.textContent=icon;
+  const words=document.createElement('span'),strong=document.createElement('strong'),small=document.createElement('small');
+  strong.textContent=title;small.textContent=description;words.append(strong,small);a.append(em,words);div.append(a);
+ });
+ if(parseQuestions(c.questions).rows.length){
+  const a=document.createElement('button');a.className='restored-game';a.style.width='100%';
+  a.innerHTML='<span class="em">📖</span><span><strong>追加したワークの問題</strong><small>この端末に保存してあるワーク問題</small></span>';
+  a.addEventListener('click',()=>enterQuiz('work'));div.append(a);
+ }
+ $('subjectNote').textContent=(currentExam==='term'&&id==='social'?'📚 新しい歴史の期末問題を追加しました。元の江戸時代ゲームもそのまま残っています。': '📚 以前のゲームを丸ごと復活。各ゲームの復習・途中再開機能はそのままです。')+
+   '　学習記録は、送信設定がある端末で解答した時に記録を試みます。';
+ showView('Subject');
+};
+</script>
+<style>
+#recommendBox{margin:19px 0;background:#fffbea;border:2px solid #f5d792;border-radius:22px;padding:16px;display:none}
+#recommendBox h2{font-size:25px;margin:0 0 10px}#recommendBox .mini{font-size:15px;margin:6px 0 12px;color:#6b6045}
+.recoItem{border:2px solid #e8dab8;background:white;border-radius:14px;margin:7px 0;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;gap:11px;text-decoration:none;font-size:19px;font-weight:800;color:#37405c}.recoItem small{font-size:13px;color:#765833}
+#homeAnalytics{border:2px solid #cfdde9;border-radius:20px;background:#fff;padding:16px;margin:15px 0 18px;display:none}
+#homeAnalytics h2{font-size:24px;margin-bottom:6px}#homeAnalytics .statSmall{font-size:14px;color:#5e7084}
+.analyticsRow{margin:9px 0}.analyticsLabel{display:flex;justify-content:space-between;font-size:15px;font-weight:800}
+.analyticsTrack{height:12px;background:#edf0f6;border-radius:20px;overflow:hidden}.analyticsTrack>div{height:100%;background:#70ad99;border-radius:20px}
+#unitDashboard{margin:16px 0;background:#f5faff;border:2px solid #dce5f0;padding:16px;border-radius:20px;display:none}
+#unitDashboard table{width:100%;border-collapse:collapse;font-size:14px}#unitDashboard td,#unitDashboard th{padding:9px 5px;border-bottom:1px solid #d6e3ec;text-align:left}#unitDashboard td:nth-child(3){font-weight:900}
+#archiveAdmin{background:#f8faff;border:1px solid #d2e3ef;border-radius:15px;padding:13px;margin-top:14px}
+#archiveAdmin label{display:flex;gap:8px;align-items:center;font-size:15px;margin:8px 0}#archiveAdmin input{width:22px;height:22px;flex:none}
+.archiveNote{font-size:13px;color:#6f6470;line-height:1.5}
+</style>
+<script>
+(()=>{
+const INSIGHTS='boku-study-insights-v2',ARCHIVE='boku-study-hidden-v1';
+const LABEL={science:'🧪 理科',social:'🌏 社会',english:'🔤 英語',home:'🧵 家庭科'};
+const NAMES={science_plants:'理科8単元わかるラボ',science_master:'理科マスター',science_reading:'読み取りラボ',science_practical:'実戦チャレンジ',science_electricity:'電流・電圧・抵抗',history_term:'近代化と開国・幕府の滅亡',english_term:'Unit 6 期末ワーク',social_geography:'地理',geo_figures:'地理・図解',social_edo:'江戸時代',english_full:'英語ミッション',home_economics_full:'衣服ミッション'};
+const KEY_FOR={master:'science_master',reading:'science_reading',practical:'science_practical',electric:'science_electricity',geo:'social_geography',edo:'social_edo',english:'english_full',home:'home_economics_full'};
+const GAMES=[
+ {exam:'proficiency',source:'science_plants',s:'science',name:'理科8単元わかるラボ',path:'science_plants.html'},
+ {exam:'proficiency',source:'master',s:'science',name:'理科マスター',path:'science_master.html'},
+ {exam:'proficiency',source:'reading',s:'science',name:'読み取りラボ',path:'science_reading.html'},
+ {exam:'proficiency',source:'practical',s:'science',name:'実戦チャレンジ',path:'science_practical.html'},
+ {exam:'proficiency',source:'geo',s:'social',name:'地理',path:'social_geography.html'},
+ {exam:'proficiency',source:'geo_figures',s:'social',name:'地理・図解',path:'geo_figures.html'},
+ {exam:'proficiency',source:'edo',s:'social',name:'江戸時代',path:'social_edo.html'},
+ {exam:'proficiency',source:'english',s:'english',name:'英語ミッション',path:'english_full.html?test=proficiency'},
+ {exam:'proficiency',source:'home',s:'home',name:'衣服ミッション',path:'home_economics_full.html?test=proficiency'},
+ {exam:'term',source:'electric',s:'science',name:'電流・電圧・抵抗',path:'science_electricity.html'},
+ {exam:'term',source:'history_term',s:'social',name:'近代化と開国・幕府の滅亡',path:'history_term.html'},
+ {exam:'term',source:'english_term',s:'english',name:'Unit 6 期末ワーク追加',path:'english_term.html'},
+ {exam:'term',source:'english',s:'english',name:'Unit 6 比較級・最上級',path:'english_full.html?test=term'},
+ {exam:'term',source:'home',s:'home',name:'衣服ミッション',path:'home_economics_full.html?test=term'},
+ {exam:'term',source:'geo',s:'social',name:'地理（復習）',path:'social_geography.html?test=term'},
+ {exam:'term',source:'edo',s:'social',name:'江戸時代（復習）',path:'social_edo.html?test=term'}
+];
+function load(k,fallback){try{return JSON.parse(localStorage.getItem(k)||'null')||fallback}catch(e){return fallback}}
+function write(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function archive(){return load(ARCHIVE,{})}
+function key(x){return x.exam+':'+x.source}
+function progress(){return load(INSIGHTS,{games:{}}).games||{}}
+function status(x){if(!x||!x.attempts)return {label:'未着手',priority:3};const rate=x.correct/x.attempts;if(x.attempts>=3&&rate<.7)return {label:'苦手・復習',priority:0};if(x.attempts<5)return {label:'まだ少し',priority:1};if(rate<.85)return {label:'もう一度',priority:1};return{label:'よくできた',priority:5}}
+function make(tag,text,cls=''){const el=document.createElement(tag);el.textContent=text;if(cls)el.className=cls;return el}
+const home=document.getElementById('viewHome'),panel=document.createElement('section');panel.id='recommendBox';
+panel.innerHTML='<h2>🍎 つぎはここを攻略しよう！</h2><p class="mini">この端末の学習記録からおすすめを表示しています。</p><div id="recommendItems"></div>';
+const analytics=document.createElement('section');analytics.id='homeAnalytics';analytics.innerHTML='<h2>📊 きょうの学習</h2><div class="statSmall">このスマホで記録された学習回数（メールの集計とは別です）</div><div id="analyticsContent"></div>';
+const units=document.createElement('section');units.id='unitDashboard';units.innerHTML='<h2>📋 電気の単元別チェック</h2><div id="unitList"></div>';
+const target=document.getElementById('homeReportStatus');target.parentNode.insertBefore(panel,target);target.parentNode.insertBefore(analytics,target);target.parentNode.insertBefore(units,target);
+function refresh(){const exam=typeof currentExam==='string'?currentExam:'';if(!exam){panel.style.display='none';analytics.style.display='none';units.style.display='none';return;}
+ const hist=progress(),hidden=archive(),all=GAMES.filter(x=>x.exam===exam&&!hidden[key(x)]).map(x=>({...x,record:hist[key(x)],tag:status(hist[key(x)])}));
+ const rec=all.filter(x=>x.tag.priority<5).sort((a,b)=>a.tag.priority-b.tag.priority).slice(0,3);panel.style.display='block';
+ const area=document.getElementById('recommendItems');area.replaceChildren();
+ if(!rec.length)area.append(make('p','✨ いま表示中のゲームは順調！ 気になるものを選んでね。'));
+ rec.forEach(x=>{const a=document.createElement('a');a.href=x.path;a.className='recoItem';const span=make('span',LABEL[x.s]+' ／ '+x.name),tag=make('small',x.tag.label);a.append(span,tag);area.append(a)});
+ analytics.style.display='block';const stat=document.getElementById('analyticsContent');stat.replaceChildren();let counted=0;
+ const entries=Object.entries(LABEL).map(([s,label])=>({s,label,n:all.filter(x=>x.s===s).reduce((a,x)=>a+(x.record?.attempts||0),0)}));let mx=Math.max(1,...entries.map(x=>x.n));
+ entries.forEach(x=>{counted+=x.n;let line=make('div','','analyticsRow'),labs=make('div','','analyticsLabel'),title=make('span',x.label),num=make('span',x.n+'問'),track=make('div','','analyticsTrack'),fill=make('div');fill.style.width=(x.n/mx*100)+'%';labs.append(title,num);track.append(fill);line.append(labs,track);stat.append(line)});
+ if(!counted)stat.append(make('p','まだ学習記録はありません。はじめの1問から！','statSmall'));
+ // Science electricity unit by unit if available.
+ units.style.display=exam==='term'?'block':'none';const ul=document.getElementById('unitList');ul.replaceChildren();
+ if(exam==='term'){const u=hist['term:electric']?.units||{};let table=document.createElement('table');const head=document.createElement('tr');['単元','回数','判定'].forEach(t=>head.append(make('th',t)));table.append(head);
+ ['電流','電圧','抵抗'].forEach(unit=>{const d=u[unit],n=d?.attempts||0,rate=n?d.correct/n:0,label=n===0?'未着手':n>=3&&rate<.7?'苦手':n<5?'練習中':rate>=.85?'順調':'復習しよう';const row=document.createElement('tr');[unit,n+'問',label].forEach(t=>row.append(make('td',t)));table.append(row)});ul.append(table)}
+}
+const admin=document.createElement('div');admin.id='archiveAdmin';admin.innerHTML='<h3>🗂️ 終わった教材を休止（非表示）</h3><p class="archiveNote">問題や履歴は消えません。非表示はこの端末だけに適用されます。息子さんのスマホも変えるには、その端末で設定してください。</p><div id="archiveItems"></div>';
+const par=document.getElementById('viewParent');par.append(admin);
+function drawAdmin(){const box=document.getElementById('archiveItems'),hidden=archive();box.replaceChildren();GAMES.forEach(g=>{const lab=document.createElement('label'),chk=document.createElement('input');chk.type='checkbox';chk.checked=!!hidden[key(g)];chk.addEventListener('change',()=>{const h=archive();h[key(g)]=chk.checked;write(ARCHIVE,h);refresh()});lab.append(chk,make('span',(g.exam==='term'?'期末':'習熟度')+'・'+LABEL[g.s]+'・'+g.name));box.append(lab)})}
+const originalViewSubject=viewSubject;
+viewSubject=function(id){originalViewSubject(id);const hidden=archive();document.querySelectorAll('#restoredGames a.restored-game').forEach(link=>{const linkPath=new URL(link.getAttribute('href'),location.href).pathname.split('/').pop();const match=GAMES.find(g=>g.exam===currentExam&&g.s===id&&g.path.split('?')[0]===linkPath);if(match&&hidden[key(match)])link.style.display='none'});
+ if(![...document.querySelectorAll('#restoredGames a.restored-game')].some(x=>x.style.display!=='none'))document.getElementById('subjectNote').textContent='この教科の教材は休止中です。おうちの人の設定から再開できます。';
+};
+document.addEventListener('click',()=>setTimeout(refresh,80),true);
+document.addEventListener('visibilitychange',refresh);window.addEventListener('pageshow',refresh);window.addEventListener('focus',refresh);
+drawAdmin();refresh();
+})();
+</script>
+
+<script src="study-ote.js?v=1" defer></script>
+<script src="study-sound.js?v=20261102" defer></script>
+<script>renderBalloons();window.addEventListener("pageshow",renderBalloons);window.addEventListener("storage",renderBalloons);</script><script>
+(function(){
+ const key='study-sound-enabled',btn=document.getElementById('globalSoundToggle');
+ if(!btn)return;
+ function read(){try{return localStorage.getItem(key)!=='false'}catch(e){return true}}
+ function draw(){const on=read();btn.textContent=on?'🔊 音 ON':'🔇 音 OFF';btn.setAttribute('aria-pressed',String(on));btn.style.background=on?'#e5f8ed':'#f0f0f0';}
+ btn.addEventListener('click',()=>{try{localStorage.setItem(key,String(!read()))}catch(e){}draw()});
+ window.addEventListener('pageshow',draw);draw();
+})();
+</script>
+</body></html>

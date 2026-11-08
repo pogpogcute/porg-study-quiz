@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#edf8f3">
+<title>理科・読み取りラボ｜５問ごと応援版</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;color:#27374a;background:#eef8f3;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 5% 1%,#d2f3e3,transparent 45%),linear-gradient(150deg,#eef8f3,#eef4ff 68%,#fff7ea)}
+button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.wrapper{width:min(720px,100%);margin:auto;padding:16px 12px 40px}
+header{display:flex;justify-content:space-between;align-items:center;gap:9px;padding:4px 3px 14px}
+.brand{font-size:15px;font-weight:900;letter-spacing:.01em}.brand-icon{font-size:23px;vertical-align:-2px;margin-right:5px}
+.chip{font-size:12px;font-weight:800;color:#14624e;background:#def4e9;padding:8px 10px;border-radius:30px;white-space:nowrap}
+.card{background:#fff;border:1px solid #dbeae5;border-radius:20px;box-shadow:0 8px 32px #23415812;padding:19px 16px}
+.center{text-align:center}.hero{font-size:57px;line-height:1.5;margin:6px 0 10px}.hero-title{font-size:clamp(26px,7vw,36px);font-weight:950;letter-spacing:-.045em;margin:0 0 10px;color:#244538}
+.desc{font-size:14px;line-height:1.8;color:#52677a;margin:7px 0 17px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:14px 0 22px}
+.step{border-radius:11px;padding:11px 4px;font-weight:850;text-align:center;background:#eff2f6;color:#728093;font-size:12px}
+.step.active{background:#d5f0e4;color:#216950}.step.past{background:#e2f0ed;color:#3f7164}
+.cta,.outline,.choice{border-radius:13px;display:block;width:100%;min-height:56px;font-size:15px;font-weight:780;line-height:1.55;transition:transform .08s,background .1s}
+.cta:active,.outline:active,.choice:active{transform:scale(.99)}
+.cta{border:2px solid #246e59;background:#267a60;color:#fff;padding:12px 14px;text-align:center;margin:13px 0 4px}
+.outline{background:#f1f5f8;border:2px solid #e0e9ec;color:#344e5f;padding:12px 14px;margin:10px 0 4px}
+.choice{background:#fff;color:#24384b;border:2px solid #d5e1e9;text-align:left;padding:12px 13px;margin:9px 0}
+.choice .letter{display:inline-flex;align-items:center;justify-content:center;width:29px;height:29px;background:#eaf1f6;color:#3a5b72;border-radius:9px;font-size:14px;margin-right:8px}
+.choice.good{background:#e2f5eb;border-color:#238664}.choice.good .letter{background:#258c69;color:#fff}
+.choice.bad{background:#ffede8;border-color:#d87c53}.choice.bad .letter{background:#cf744f;color:#fff}
+.choice:disabled{opacity:1;cursor:default}
+.progress-head{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:820;margin-bottom:10px;color:#3c5e64}
+.progress{height:10px;background:#e4eef0;overflow:hidden;border-radius:20px}.fill{height:100%;background:linear-gradient(90deg,#39a885,#98cf7b);border-radius:20px;transition:width .2s}
+.unit{font-weight:900;font-size:12px;letter-spacing:.02em;color:#39846c;margin-top:17px}
+.problem{background:#f0f5fa;border:1px solid #e2eaf1;border-left:5px solid #749cbc;border-radius:12px;padding:14px 13px;font-size:16px;font-weight:700;line-height:2.02;margin:10px 0 15px;white-space:pre-wrap}
+.highlighter{background:#ffe9a2;padding:1px 2px;border-radius:3px}
+.quest{font-size:19px;font-weight:950;line-height:1.5;margin:16px 1px 13px}
+.reply{border-radius:13px;padding:14px;font-size:14px;line-height:1.8;margin-top:14px}
+.reply.ok{background:#e5f7ed;border:1px solid #b8e3ca;color:#226344}.reply.try{background:#fff2e3;border:1px solid #f3d6b5;color:#784c29}
+.reply-title{font-size:16px;font-weight:900;margin:0 0 6px}
+.mini{font-size:12px;color:#657985;line-height:1.7}
+.score{font-size:clamp(45px,12vw,62px);font-weight:950;line-height:1.1;color:#248065;margin:14px 0 5px;letter-spacing:-.05em}
+.resultrow{display:flex;gap:10px;border-bottom:1px solid #e7eeef;padding:12px 2px;align-items:center;font-size:13px}.resultrow .name{flex:1;font-weight:700}.status{font-weight:850;white-space:nowrap;color:#267b65}.status.retry{color:#ae704b}
+.section-title{font-size:15px;font-weight:900;margin:22px 0 4px}
+.footer{text-align:center;font-size:12px;color:#748891;margin-top:14px;line-height:1.8}
+.small-btn{font-size:12px;font-weight:850;border:1px solid #ccdfdc;border-radius:11px;background:white;padding:8px 11px;color:#2b7062;margin-top:8px}
+@media(min-width:540px){.wrapper{padding:24px 18px 55px}.card{padding:26px 28px}.problem{padding:17px;font-size:18px}.step{font-size:13px}}
+
+.milestone{background:linear-gradient(145deg,#fff9d8,#e4faed);text-align:center;border:3px solid #efd275}
+.milestone .hero{font-size:72px}
+.milestone .hero-title{color:#156c4c}
+.milestone .pep{font-weight:900;font-size:20px;line-height:1.9;color:#376855;margin:13px 0}
+.milestone .cta{min-height:66px;font-size:19px}
+</style>
+<style id="compact-feedback-20261102">
+/* Correct / incorrect feedback: reduce panel vertical footprint, preserve legibility. */
+.resultbanner{padding-top:10px!important;padding-bottom:10px!important;margin-top:9px!important;line-height:1.3!important}
+.feedback{padding-top:9px!important;padding-bottom:9px!important;margin-top:8px!important;min-height:0!important;line-height:1.4!important}
+.feedback p{margin-top:4px!important;margin-bottom:4px!important;line-height:1.4!important}
+.feedback .next{margin-top:5px!important}
+.reactionWrap{padding-top:9px!important;padding-bottom:9px!important;margin-top:9px!important;gap:12px!important}
+.reactionWrap .reactPhoto{width:80px!important;height:83px!important}
+.reactionWrap .reactMessage{line-height:1.25!important}
+.reactionWrap .reactDetails{margin-top:4px!important}
+.overlay-inner{padding:16px 20px!important;max-height:85dvh!important}
+.overlay-inner h2{margin:3px 0 5px!important;line-height:1.25!important}
+.overlay-inner p{margin:5px 0!important;line-height:1.4!important}
+.overlay .big-mascot svg{width:135px!important;height:137px!important}
+.overlay .btn{margin-top:8px!important}
+#cheer > div{padding-top:12px!important;padding-bottom:12px!important;max-height:88dvh!important;overflow:auto!important}
+#cheer .mascotBig{width:min(130px,30vw)!important;height:min(130px,30vw)!important}
+#cheer h2{margin-top:6px!important;margin-bottom:5px!important}
+#cheer p{margin-top:4px!important;margin-bottom:5px!important}
+</style></head>
+<body><div style="background:#eaf4ff;padding:8px 12px;text-align:center;position:relative;z-index:2"><a href="./index.html" style="font-size:18px;font-weight:900;color:#174573;text-decoration:none">🏠 4教科トップページへ戻る</a></div>
+<main class="wrapper">
+<header><div class="brand"><span class="brand-icon">🔬</span>理科・読み取りラボ</div><div class="chip" id="badge">全10問</div></header>
+<section class="card" id="screen" aria-live="polite"></section>
+<div class="footer">ダウンロードしたファイルをChromeで開けば、通信なしでも遊べます。<br>時間制限なし・3択・間違えた問題の復習つき。</div>
+</main>
+<script>
+'use strict';
+const data=[
+{tag:'化学変化・気体',name:'石灰水のなぞ',p:'試験管に集めた気体を石灰水に通すと、白くにごった。この気体の化学式を答えなさい。',highlight:'化学式を答えなさい',steps:[
+['何を聞かれている？',['気体の名前','気体の化学式','実験の方法'],1,'最後の「化学式を答えなさい」を見つけよう。'],
+['答えの手がかりはどこ？',['試験管に集めた','石灰水が白くにごった','気体が発生した'],1,'石灰水がどう変化したかに注目！'],
+['気体の化学式は？',['O₂','H₂','CO₂'],2,'白くにごる → 二酸化炭素。二酸化炭素の化学式は？']],ex:'石灰水が白くにごる → 二酸化炭素 → CO₂。'},
+{tag:'化学変化・分解',name:'1つから3つ',p:'炭酸水素ナトリウムを加熱すると、炭酸ナトリウム、水、二酸化炭素ができた。このような化学変化を何というか。',highlight:'化学変化を何というか',steps:[
+['何を聞かれている？',['化学変化の名前','水の量','気体の重さ'],0,'「化学変化を何というか」を探そう。'],
+['何が大事な手がかり？',['試験管の長さ','1種類から3種類の物質ができた','加熱した時間'],1,'できる前と後で、物質が何種類あるかな？'],
+['この変化は？',['酸化','化合','分解'],2,'1つの物質が、別の2つ以上の物質に分かれるよ。']],ex:'1種類の物質が2種類以上に分かれる化学変化は「分解」。'},
+{tag:'化学変化・水の確認',name:'試験管の液体',p:'加熱した試験管の口についた液体に、青色の塩化コバルト紙をつけると赤色（桃色）に変わった。この液体は何か。',highlight:'この液体は何か',steps:[
+['何を聞かれている？',['加熱した時間','液体の名前','試験管の大きさ'],1,'「この液体は何か」を探そう。'],
+['大事な実験結果は？',['試験管の口についた','加熱した','塩化コバルト紙が青色から赤色になった'],2,'試験紙の色の変化から液体を調べられるよ。'],
+['この液体は？',['水','油','エタノール'],0,'塩化コバルト紙が青色から赤色になるのは、水があるとき。']],ex:'青色の塩化コバルト紙が赤色（桃色）になる → 水がある。'},
+{tag:'化学変化・指示薬',name:'赤い水溶液',p:'加熱後に残った白い固体を水に溶かし、フェノールフタレイン液を加えると赤色になった。この水溶液は何性か。',highlight:'この水溶液は何性か',steps:[
+['何を聞かれている？',['白い固体の名前','水溶液の性質','液体の体積'],1,'「何性か」を見つけよう。'],
+['判断に使う手がかりは？',['白い固体だった','水を使った','フェノールフタレイン液が赤色になった'],2,'指示薬の変化から水溶液の性質を判断しよう。'],
+['この水溶液は？',['酸性','中性','アルカリ性'],2,'フェノールフタレイン液はアルカリ性で赤色になるよ。']],ex:'フェノールフタレイン液が赤色になる → アルカリ性。'},
+{tag:'化学変化・化合',name:'鉄と硫黄',p:'鉄粉と硫黄の粉末を混ぜて加熱すると、黒色の物質ができた。この物質の名前を答えなさい。',highlight:'この物質の名前を答えなさい',steps:[
+['何を聞かれている？',['できた物質の名前','鉄粉の重さ','加熱した時間'],0,'「この物質の名前」を探そう。'],
+['何と何が反応した？',['炭素と酸素','鉄と硫黄','水素と酸素'],1,'文の最初に材料が書いてあるよ。'],
+['できた物質は？',['酸化鉄','硫化鉄','塩化鉄'],1,'鉄と硫黄が結びつくと「硫化鉄」。']],ex:'鉄＋硫黄 → 硫化鉄。反応式は Fe＋S→FeS。'},
+{tag:'化学変化・気体',name:'塩酸を加えると？',p:'鉄粉と硫黄を混ぜただけのものに、うすい塩酸を加えると、においのない気体が発生した。この気体は何か。',highlight:'この気体は何か',steps:[
+['何を聞かれている？',['混合物の色','発生した気体の名前','硫黄の重さ'],1,'「この気体は何か」を探そう。'],
+['何と何が反応した？',['硫黄と空気','水と試験管','鉄と塩酸'],2,'鉄と硫黄を混ぜただけだから、鉄はまだ残っているよ。'],
+['発生した気体は？',['水素','酸素','二酸化炭素'],0,'鉄とうすい塩酸が反応すると、水素が出る。']],ex:'鉄＋うすい塩酸 → 水素。水素は気体の中で最も軽い。'},
+{tag:'化学変化・酸化',name:'マグネシウム',p:'マグネシウムを空気中で十分に加熱すると、白色の酸化マグネシウムができた。このように酸素と結びつく化学変化を何というか。',highlight:'化学変化を何というか',steps:[
+['何を聞かれている？',['化学変化の名前','粉末の色','加熱した時間'],0,'「化学変化を何というか」に注目。'],
+['何と結びついた？',['水','酸素','窒素'],1,'「このように」の前に書いてあるよ。'],
+['この変化は？',['酸化','分解','蒸発'],0,'酸素と結びつく変化は「酸化」。']],ex:'物質が酸素と結びつく化学変化は「酸化」。'},
+{tag:'化学変化・質量',name:'増えた重さの正体',p:'マグネシウム2.4gを十分に加熱すると、酸化マグネシウム4.0gができた。結びついた酸素の質量は何gか。',highlight:'酸素の質量は何gか',steps:[
+['何を聞かれている？',['マグネシウムの名前','酸素の質量','加熱した時間'],1,'「酸素の質量」に注目。'],
+['計算に必要な数値は？',['2.4gと4.0g','加熱した時間','試験管の数'],0,'加熱前と加熱後の質量を比べよう。'],
+['酸素の質量は？',['6.4g','1.6g','2.4g'],1,'4.0−2.4を計算してみよう。']],ex:'4.0−2.4＝1.6g。増えた分が結びついた酸素の重さ。'},
+{tag:'生物・葉のつくり',name:'葉の裏側の秘密',p:'葉の裏側を顕微鏡で観察すると、2つの孔辺細胞に囲まれた小さなすき間が見つかった。このすき間を何というか。',highlight:'このすき間を何というか',steps:[
+['何を聞かれている？',['葉の色','すき間の名前','細胞の数'],1,'最後の「すき間を何というか」を探そう。'],
+['すき間の特徴は？',['顕微鏡を使った','裏側を見た','孔辺細胞に囲まれている'],2,'すき間のまわりにある細胞の名前を読もう。'],
+['すき間の名前は？',['師管','道管','気孔'],2,'気体や水蒸気が出入りする小さなすき間は？']],ex:'孔辺細胞に囲まれたすき間 → 気孔。'},
+{tag:'生物・葉のつくり',name:'水を運ぶ道',p:'葉の断面を調べると、根から吸収した水や無機養分を運ぶ管が見つかった。この管を何というか。',highlight:'この管を何というか',steps:[
+['何を聞かれている？',['管の名前','葉の長さ','根の数'],0,'最後の「この管を何というか」に注目。'],
+['何を運ぶ管？',['空気だけ','水や無機養分','光だけ'],1,'「運ぶ」の前に書いてあるものを探そう。'],
+['管の名前は？',['師管','気孔','道管'],2,'水を運ぶのは「道管」。光合成でつくられた養分は「師管」。']],ex:'水や無機養分を運ぶ → 道管。光合成でつくられた養分を運ぶ → 師管。'}
+];
+const screen=document.querySelector('#screen');
+const badge=document.querySelector('#badge');
+let mode='home',order=[],pos=0,phase=0,selected=null,missed=new Set(),stepWrong=false,milestone=0;
+const FUNNY_READ={2:'くまの涙',5:'パンダのため息',8:'小人の通り道'};
+const CHEERS5=[['🐼','パンダ博士が拍手！','５問も読んで考えた！迷った問題も、大事な経験だよ。'],['🐸','カエル研究員もびっくり！','ここまで進めたね。１問ずつ、君のペースでいこう！'],['🦊','読み取り名探偵、お見事！','うまくいかなくても進めたことがすごい。続きもいけるよ！']];
+function optionsForCurrent(item){const st=item.steps[phase];const opts=[...st[1]];if(phase===2&&Object.prototype.hasOwnProperty.call(FUNNY_READ,order[pos])&&mode!=='review'){const wrong=(st[2]+1)%3;opts[wrong]=FUNNY_READ[order[pos]];}return opts;}
+function renderMilestone(){const n=milestone,card=CHEERS5[(n/5-1)%CHEERS5.length];const last=pos>=order.length;screen.classList.add('milestone');screen.innerHTML=`<div class="center"><div class="hero">${card[0]} 🎉</div><h1 class="hero-title">${n}問進んだー！</h1><div class="pep">${card[1]}</div><p class="desc">${card[2]}</p><p class="mini">正解できた数に関係なく、ここまで進んだことをお祝いするよ！</p></div><button class="cta" data-action="mileNext">${last?'結果を見よう！':'次の５問へ！'} →</button><button class="outline" data-action="rest">ちょっと休む（続きは保存）</button>`;}
+
+const SAVE_KEY='rika-reading-10-session-v3';
+function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify({mode,order,pos,phase,selected,missed:[...missed],stepWrong,milestone}));}catch(e){}}
+function restore(){try{const s=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');if(!s||!['play','review','home'].includes(s.mode)||!Array.isArray(s.order)||!s.order.every(i=>Number.isInteger(i)&&i>=0&&i<data.length))return;mode=s.mode;order=s.order;pos=Math.max(0,Math.min(order.length,Number(s.pos)||0));phase=Math.max(0,Math.min(2,Number(s.phase)||0));selected=Number.isInteger(s.selected)?s.selected:null;missed=new Set((s.missed||[]).filter(i=>Number.isInteger(i)&&i>=0&&i<data.length));stepWrong=!!s.stepWrong;milestone=Number(s.milestone)||0;}catch(e){}}
+
+function esc(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+function render(){save();badge.textContent=mode==='review'?'まちがい復習':'全10問';screen.classList.remove('milestone');if(milestone){renderMilestone();return;}if(mode==='home'){screen.innerHTML=`<div class="center"><div class="hero">🧪 🔍 🌱</div><h1 class="hero-title">実験のなぞを解け！</h1><p class="desc">理科の文章問題を10問、ゲームで練習！<br>「何を聞いてる？」「手がかりは？」「答えは？」の順番で解こう。</p></div><div class="steps"><div class="step active">① 質問を探す</div><div class="step active">② 手がかりを探す</div><div class="step active">③ 答える</div></div><p class="mini center">3択・時間制限なし・失敗しても再挑戦できるよ。<br>まちがえた問題は最後に練習！ 途中経過は自動保存されます。</p><button class="cta" data-action="start">ゲームスタート　→</button>`;return;}
+if(pos>=order.length){renderResult();return;}
+const item=data[order[pos]],step=item.steps[phase],ok=selected===step[2],responded=selected!==null;const progress=((pos*3+phase+(responded&&ok?1:0))/(order.length*3))*100;let para=esc(item.p);if(phase>0){const h=esc(item.highlight);para=para.replace(h,`<mark class="highlighter">${h}</mark>`);}
+screen.innerHTML=`<div class="progress-head"><span>第 ${pos+1} 問 ／ ${order.length} 問</span><span>${esc(item.tag)}</span></div><div class="progress"><div class="fill" style="width:${progress}%"></div></div><div class="steps">${['① 質問を探す','② 手がかりを探す','③ 答える'].map((label,i)=>`<div class="step ${i===phase?'active':i<phase?'past':''}">${label}</div>`).join('')}</div><div class="unit">📖 ${esc(item.name)}</div><div class="problem">${para}</div><div class="quest">${esc(step[0])}</div>${optionsForCurrent(item).map((v,i)=>`<button class="choice ${responded&&selected===i?(ok?'good':'bad'):''}" data-action="choose" data-choice="${i}" ${responded?'disabled':''}><span class="letter">${['ア','イ','ウ'][i]}</span>${esc(v)}</button>`).join('')}${responded?`<div class="reply ${ok?'ok':'try'}"><div class="reply-title">${ok?['ズバリ！その答え！','ピンポン！大発見！','大当たり！探偵の目！','きたー！よく見つけた！'][pos%4]:'おしい！ ここを見よう。'}</div><div>${esc(ok?(phase===2?item.ex:'いいところが見つかった！ 次へ進もう。'):step[3])}</div></div><button class="${ok?'cta':'outline'}" data-action="${ok?'next':'again'}">${ok?(phase===2?'次の問題へ　→':'次のステップへ　→'):'ヒントを見てもう一度　↻'}</button>`:'<p class="mini">あせらず選んでみよう。どこに書いてあるか探すのも練習だよ。</p>'}`;
+}
+function renderResult(){const n=order.length,perfect=n-[...missed].filter(i=>order.includes(i)).length;const title=perfect===n?'全問一発正解！':perfect>=Math.ceil(n*.7)?'いい調子！':'最後までチャレンジできた！';screen.innerHTML=`<div class="center"><div class="hero">🏆 🔬</div><h1 class="hero-title">${title}</h1><p class="desc">全${n}問クリア！ 最初に全部のステップを正解できたのは…</p><div class="score">${perfect} / ${n}</div><p class="mini">ヒントを使って解けた問題も、大事な一歩！</p></div><h2 class="section-title">今日のチャレンジ</h2>${order.map(i=>`<div class="resultrow"><span>${missed.has(i)?'🔁':'✅'}</span><span class="name">${esc(data[i].name)}</span><span class="status ${missed.has(i)?'retry':''}">${missed.has(i)?'復習しよう':'一発正解'}</span></div>`).join('')}${missed.size?`<button class="cta" data-action="review">まちがえた${missed.size}問を復習　→</button>`:'<div class="reply ok center" style="margin:16px 0">完璧！ 次は本番形式にも挑戦できそうだね。</div>'}<button class="outline" data-action="restart">10問を最初から</button>`;}
+function start(review){if(review){order=[...missed].sort((a,b)=>a-b);mode='review';}else{order=data.map((_,i)=>i);mode='play';}pos=0;phase=0;selected=null;missed=new Set();stepWrong=false;milestone=0;render();}
+screen.addEventListener('click',ev=>{const b=ev.target.closest('button[data-action]');if(!b)return;const act=b.dataset.action;if(act==='start'||act==='restart'){start(false);return;}if(act==='review'){start(true);return;}if(act==='choose'){if(selected!==null)return;selected=Number(b.dataset.choice);if(selected!==data[order[pos]].steps[phase][2]){missed.add(order[pos]);stepWrong=true;}render();return;}if(act==='again'){selected=null;render();return;}if(act==='mileNext'){milestone=0;render();return;}if(act==='rest'){save();alert('進み具合は保存しました。次に開いたとき、この応援画面から再開できます。');return;}if(act==='next'){if(phase<2)phase++;else{phase=0;pos++;if(pos>0&&pos%5===0)milestone=pos;}selected=null;stepWrong=false;render();}});
+restore();render();
+</script>
+<script>
+/* 理科ゲーム保護者向け記録モジュール。外部ライブラリ不要、オフラインでも記録。 */
+(function(){
+'use strict';
+const IS_MASTER = !!document.getElementById('settingsBtn');
+const GAME = IS_MASTER ? '理科マスター' : '読み取りラボ';
+const LOG_KEY = IS_MASTER ? 'rika_parent_monitor_master_v1' : 'rika_parent_monitor_reading_v1';
+const defaultReport = ()=>({v:1,events:[],sessions:{},roundId:'',roundStarted:0,settings:{endpoint:'',token:''},sent:[]});
+let report;
+try{report=JSON.parse(localStorage.getItem(LOG_KEY)||'null')||defaultReport();if(report.v!==1)report=defaultReport();}catch(e){report=defaultReport();}
+report.events=Array.isArray(report.events)?report.events:[];
+report.sessions=report.sessions||{};
+report.settings=report.settings||{endpoint:'',token:''};
+report.sent=Array.isArray(report.sent)?report.sent:[];
+const id=()=>`${Date.now()}-${Math.random().toString(36).slice(2,9)}`;
+let lastTick=Date.now(),lastAction=Date.now(),sending=false;
+function persist(){try{localStorage.setItem(LOG_KEY,JSON.stringify(report));}catch(e){console.warn('学習記録を保存できません',e);}}
+function round(){if(!report.roundId){report.roundId=id();report.roundStarted=Date.now();persist();}if(!report.sessions[report.roundId])report.sessions[report.roundId]={started:report.roundStarted||Date.now(),seconds:0,game:GAME,topic:'',finished:false};return report.roundId;}
+function playable(){return IS_MASTER?(typeof state!=='undefined'&&state.screen==='play'&&!!state.current):(typeof mode!=='undefined'&&mode!=='home'&&typeof pos!=='undefined'&&pos<order.length);}
+function topicNow(){if(IS_MASTER){const g=state.current;const item=g?.questions?.[g.index];return (typeof byId!=='undefined'&&item&&byId[item.id])? DB.units[byId[item.id].unit][0]:'その他';}if(typeof pos==='undefined'||pos>=order.length)return 'その他';return data[order[pos]].tag;}
+function tick(){const now=Date.now(),delta=now-lastTick;lastTick=now;if(playable()&&document.visibilityState==='visible'&&now-lastAction<120000&&delta>0&&delta<35000){const key=round(),s=report.sessions[key];s.seconds+=(Math.min(delta,10000)/1000);s.topic=topicNow();persist();}}
+setInterval(tick,10000);
+window.addEventListener('pagehide',()=>{tick();persist();});
+document.addEventListener('visibilitychange',()=>{tick();lastTick=Date.now();});
+function recordOnce(key,fields){round();if(report.events.some(e=>e.key===key))return;report.events.push({key,at:Date.now(),round:report.roundId,game:GAME,...fields});if(report.events.length>5000)report.events=report.events.slice(-5000);persist();}
+function capture(e){const b=e.target.closest('button');if(!b)return;if(b.closest('#parentView'))return;lastAction=Date.now();if(!playable())return;round();
+ if(IS_MASTER){const g=state.current,q=g?.questions?.[g.index],c=q&&byId[q.id];if(!g||!c)return;const action=b.dataset.act;
+  if(action==='pick'&&g.stage==='answer'&&g.picked===null&&g.wrongOptions.length===0){const selected=q.options[Number(b.dataset.i)];recordOnce(`${report.roundId}:answer:${g.index}`,{topic:DB.units[c.unit][0],kind:'知識',stem:q.stem,answer:c.a,selected,correct:selected===c.a,assist:!!g.showHelp});}
+  if(action==='read'&&g.stage==='read'&&g.readChoice===null&&g.readWrong.length===0){const selected=b.dataset.value;recordOnce(`${report.roundId}:read:${g.index}`,{topic:DB.units[c.unit][0],kind:'読み取り',stem:q.stem,answer:c.kind,selected,correct:selected===c.kind,assist:false});}
+ }else{const action=b.dataset.action;
+  if(action==='choose'&&selected===null&&pos<order.length){const idx=order[pos],obj=data[idx],st=obj.steps[phase],selectedIndex=Number(b.dataset.choice);recordOnce(`${report.roundId}:step:${pos}:${phase}`,{topic:obj.tag,kind:phase===2?'知識':(phase===0?'読み取り':'手がかり'),stem:obj.p,answer:st[1][st[2]],selected:st[1][selectedIndex],correct:selectedIndex===st[2],assist:false});}
+ }
+}
+const source=IS_MASTER?document.getElementById('app'):document.getElementById('screen');
+source.addEventListener('click',capture,true);
+// 新しいチャレンジの開始で、記録を分ける。
+source.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const act=IS_MASTER?b.dataset.act:b.dataset.action;
+ const newRun=IS_MASTER?['unit','daily','lab','exam','retry'].includes(act):['start','restart','review'].includes(act);
+ if(newRun){tick();report.roundId=id();report.roundStarted=Date.now();report.sessions[report.roundId]={started:Date.now(),seconds:0,game:GAME,topic:'',finished:false};persist();}
+ if(!IS_MASTER&&['next','mileNext'].includes(act)){setTimeout(()=>{if(pos>=order.length&&milestone===0)completeRound();},0);}
+ if(act==='mileNext'){const rid=round();setTimeout(()=>{const count=IS_MASTER?state.current?.index:pos;const total=IS_MASTER?state.current?.questions?.length:order.length;if(count>0&&count<total&&count%5===0&&report.settings.endpoint)autoSend(rid+':mile'+count);},0);}
+},true);
+function completeRound(){tick();const rid=round();const session=report.sessions[rid];if(session.finished)return;session.finished=true;session.ended=Date.now();persist();if(report.settings.endpoint)autoSend(rid);}
+if(IS_MASTER){const originalFinish=finish;finish=function(){const ended=state.current;originalFinish();if(ended)completeRound();};}
+function jday(ts){const d=new Date(ts);return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`;}
+function daySummary(day){const events=report.events.filter(e=>jday(e.at)===day),rids=new Set(events.map(e=>e.round));const relevantSessions=Object.entries(report.sessions).filter(([sid,x])=>jday(x.started)===day||rids.has(sid));const sec=relevantSessions.reduce((n,[,s])=>n+(s.seconds||0),0);
+ const kinds=['知識','読み取り','手がかり'].map(kind=>{const a=events.filter(e=>e.kind===kind);return {kind,total:a.length,correct:a.filter(x=>x.correct).length};});
+ const topics=[...new Set(events.map(e=>e.topic))].map(topic=>{const a=events.filter(e=>e.topic===topic);return {topic,total:a.length,correct:a.filter(x=>x.correct).length};});
+ const wrong=events.filter(e=>!e.correct).slice(-30).map(e=>({topic:e.topic,kind:e.kind,stem:e.stem,selected:e.selected,answer:e.answer}));
+ return {day,game:GAME,minutes:Math.round(sec/60*10)/10,seconds:Math.round(sec),kinds,topics,wrong,count:events.length};}
+function wholeSummary(){const days=[...new Set([...report.events.map(e=>jday(e.at)),...Object.values(report.sessions).map(x=>jday(x.started))])].sort().reverse();return days.map(daySummary);}
+function percent(correct,total){return total?`${Math.round(100*correct/total)}％`:'まだ記録なし';}
+function human(s){const lines=[`${s.game}　学習レポート`,`日付：${s.day}`,`学習時間（操作中の推定）：約${s.minutes}分`];
+ s.kinds.forEach(k=>{if(k.total)lines.push(`${k.kind}：${k.correct}/${k.total}問（初回正解率 ${percent(k.correct,k.total)}）`);});
+ lines.push('【学習した単元】');if(!s.topics.length)lines.push('まだ記録なし');s.topics.forEach(t=>lines.push(`${t.topic}：${t.correct}/${t.total}問（${percent(t.correct,t.total)}）`));
+ lines.push('【間違えた内容（最新10件）】');if(!s.wrong.length)lines.push('なし');s.wrong.slice(-10).forEach(x=>{lines.push(`${x.topic}／${x.kind}　${x.stem}`);lines.push(`　選んだ答え：${x.selected}　正解：${x.answer}`);});
+ lines.push('※初回正解率です。再挑戦による正解数は加算していません。');lines.push('※単元別には知識・読み取り・手がかりの回答を合算しています。');return lines.join('\n');}
+function xhtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function parentOpen(){tick();let panel=document.getElementById('parentView');if(panel){panel.remove();return;}
+ panel=document.createElement('div');panel.id='parentView';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','保護者向け学習記録');panel.style.cssText='position:fixed;z-index:2000;inset:0;overflow:auto;background:#eef6f5;color:#253a4a;padding:12px;font-family:system-ui,-apple-system,sans-serif;';
+ panel.innerHTML=`<div style="max-width:760px;margin:auto;background:white;border-radius:18px;padding:17px;box-shadow:0 5px 25px #1232"><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><h2 style="margin:4px 0">📊 保護者レポート</h2><button id="pClose" style="background:#e7eff0;border:0;padding:11px;border-radius:10px;font-weight:700">閉じる ×</button></div><p style="font-size:13px;line-height:1.8;color:#5c7180">息子さんの学習記録は、この端末内に保存されます。自動通知は保護者側で送信先を設定したときだけ有効です。</p><label for="pDay">表示する日：</label> <select id="pDay" style="font-size:15px;padding:8px;border-radius:9px;border:1px solid #ccd9db"></select><div id="pSummary" style="white-space:pre-wrap;line-height:1.75;padding:14px;background:#f1f8f5;border-radius:12px;margin-top:12px;font-size:14px"></div><button id="pCopy" class="parentBtn">レポートをコピー</button><button id="pEmail" class="parentBtn">メールアプリで送る</button><button id="pCSV" class="parentBtn">全記録をCSVで保存</button><hr style="border:0;border-top:1px solid #e2e9e8;margin:18px 0"><h3>自動メール通知の設定</h3><p style="font-size:13px;line-height:1.8">同梱の「Googleスプレッドシート自動送信設定」を先に行い、発行されたウェブアプリURLと秘密キーを入力してください。終了時に自動送信を試みます。インターネットが必要です。送信完了はゲーム画面だけでは保証できないため、メール受信を確認してください。</p><label style="display:block;margin-top:8px">ウェブアプリURL<input id="pEndpoint" type="url" placeholder="https://script.google.com/macros/s/.../exec" style="display:block;width:100%;min-height:44px;border:1px solid #cad9dc;border-radius:9px;padding:8px;margin-top:5px"></label><label style="display:block;margin-top:10px">秘密キー<input id="pToken" type="password" placeholder="設定した20文字以上の秘密キー" style="display:block;width:100%;min-height:44px;border:1px solid #cad9dc;border-radius:9px;padding:8px;margin-top:5px"></label><button id="pSaveCfg" class="parentBtn">自動通知の設定を保存</button><button id="pTest" class="parentBtn">今のレポートを試しに送信</button><button id="pDisable" class="parentBtn" style="background:#fff2e9;color:#874c30">自動通知をオフにする</button><p id="pMessage" style="font-size:13px;color:#27705d;line-height:1.7"></p><p style="font-size:12px;color:#71828a">勉強時間は画面が表示され、操作や学習が続いている間を集計した目安です。別の端末の記録は自動で合算されません。</p></div>`;
+ panel.querySelectorAll('.parentBtn').forEach(b=>{b.style.cssText='display:block;width:100%;background:#d9efe8;color:#245d50;border:0;border-radius:10px;min-height:43px;font-size:14px;font-weight:750;margin-top:9px;padding:9px;cursor:pointer';});
+ document.body.appendChild(panel);document.body.style.overflow='hidden';
+ const days=wholeSummary();if(!days.length)days.push(daySummary(jday(Date.now())));
+ const select=panel.querySelector('#pDay');days.forEach(s=>{const o=document.createElement('option');o.value=s.day;o.textContent=s.day;select.appendChild(o);});
+ const getS=()=>daySummary(select.value);
+ const update=()=>{panel.querySelector('#pSummary').textContent=human(getS());};select.addEventListener('change',update);update();
+ const message=x=>panel.querySelector('#pMessage').textContent=x;
+ panel.querySelector('#pClose').onclick=()=>{panel.remove();document.body.style.overflow='';};
+ panel.querySelector('#pEndpoint').value=report.settings.endpoint||'';
+ panel.querySelector('#pToken').value=report.settings.token||'';
+ panel.querySelector('#pCopy').onclick=async()=>{try{await navigator.clipboard.writeText(human(getS()));message('レポートをコピーしました。');}catch(e){message('コピーできない場合は、レポートの文字を長押ししてコピーしてください。');}};
+ panel.querySelector('#pEmail').onclick=()=>{const s=getS();location.href=`mailto:?subject=${encodeURIComponent('【理科ゲーム】'+s.day+' 学習報告')}&body=${encodeURIComponent(human(s))}`;};
+ panel.querySelector('#pCSV').onclick=()=>{const header=['日時','ゲーム','単元','種類','問題文','初回選択','正解','初回正解','補助'];const cells=[header,...report.events.map(e=>[new Date(e.at).toLocaleString('ja-JP'),e.game,e.topic,e.kind,e.stem,e.selected,e.answer,e.correct?'正解':'不正解',e.assist?'あり':'なし'])];let csv='\ufeff'+cells.map(row=>row.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\r\n');const a=document.createElement('a');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.href=url;a.download='rika_gakushu_kiroku.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);message('CSVファイルを書き出しました。');};
+ panel.querySelector('#pSaveCfg').onclick=()=>{const url=panel.querySelector('#pEndpoint').value.trim(),token=panel.querySelector('#pToken').value.trim();if(url&&!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(url)){message('Google Apps ScriptのウェブアプリURL（/execで終わるもの）を入力してください。');return;}if(url&&token.length<20){message('秘密キーを20文字以上にしてください。');return;}report.settings={endpoint:url,token};persist();message(url?'設定を保存しました。自動送信は次の終了時から有効です。':'自動送信をオフにしました。');};
+ panel.querySelector('#pTest').onclick=()=>{const url=panel.querySelector('#pEndpoint').value.trim(),token=panel.querySelector('#pToken').value.trim();if(!url||token.length<20){message('URLと20文字以上の秘密キーを設定・保存してください。');return;}report.settings={endpoint:url,token};persist();autoSend(report.roundId||'test',getS(),true).then(()=>message('送信を試みました。実際に届いたかメールを確認してください。')).catch(()=>message('送信できませんでした。接続と設定を確認してください。'));};
+ panel.querySelector('#pDisable').onclick=()=>{report.settings.endpoint='';report.settings.token='';persist();panel.querySelector('#pEndpoint').value='';panel.querySelector('#pToken').value='';message('自動通知をオフにしました。');};
+ }
+async function autoSend(rid,which=null,test=false){if(sending)return;const settings=report.settings;if(!settings.endpoint||!settings.token)return;if(!test&&report.sent.includes(rid))return;sending=true;try{const s=which||daySummary(jday(Date.now()));const data={token:settings.token,id:`${GAME}:${rid}${test?':test:'+Date.now():''}`,game:GAME,day:s.day,minutes:s.minutes,kinds:s.kinds,topics:s.topics,wrong:s.wrong,report:human(s),test:!!test};await fetch(settings.endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(data),keepalive:true});if(!test){report.sent.push(rid);report.sent=report.sent.slice(-1000);persist();}}finally{sending=false;}}
+// ボタンをゲーム本体の上部に追加する。既存の問題や判定には触れない。
+const btn=document.createElement('button');btn.textContent='📊 保護者レポート';btn.type='button';btn.style.cssText='border:1px solid #bdceca;background:white;color:#285b55;border-radius:11px;padding:10px 12px;font-size:13px;font-weight:800;cursor:pointer';btn.addEventListener('click',parentOpen);
+if(IS_MASTER){document.querySelector('.corner').appendChild(btn);}else{document.querySelector('header').appendChild(btn);}
+window.__rikaParentReport={open:parentOpen,daySummary,wholeSummary};
+})();
+
+</script>
+<script src="study-telemetry.js" data-subject="理科" data-title="読み取りラボ" data-source="reading" data-test="proficiency"></script><script src="study-ote.js?v=1" defer></script>
+<script src="study-plush-league.js?v=3" defer></script>
+<script src="study-sound.js?v=20261102" defer></script>
+</body>
+</html>
